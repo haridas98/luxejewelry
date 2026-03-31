@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script type="text/javascript" nonce="96ee890d73be47a28ca9c1d8f63" src="//injections.adguard.org?ts=1774675580435&amp;type=content-script&amp;dmn=contribution.usercontent.google.com&amp;url=https%3A%2F%2Fcontribution.usercontent.google.com%2Fdownload%3Fc%3DCgthaWRhX2NvZGVmeBJ7Eh1hcHBfY29tcGFuaW9uX2dlbmVyYXRlZF9maWxlcxpaCiVodG1sXzY4Y2ZjMzczODNlYzRlNmZiYWFhOTFiOWRmM2M2ZmU5EgsSBxC-r4XAvAYYAZIBIwoKcHJvamVjdF9pZBIVQhM0NjY3NTExMTkxNzcyNzYxNDM3%26filename%3D%26opi%3D89354086&amp;app=chrome.exe&amp;css=3&amp;js=1&amp;rel=1&amp;rji=1&amp;sbe=1"></script><script type="text/javascript" nonce="96ee890d73be47a28ca9c1d8f63" src="//injections.adguard.org?ts=1774675580435&amp;name=AdGuard%20Assistant&amp;name=AdGuard%20Extra&amp;type=user-script"></script><link href="https://fonts.googleapis.com/css2?family=Noto+Serif:wght@400;700&amp;family=Manrope:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "secondary-container": "#fed488",
+                        "on-tertiary": "#ffffff",
+                        "on-error": "#ffffff",
+                        "on-secondary-fixed": "#261900",
+                        "on-primary-fixed-variant": "#474746",
+                        "on-surface-variant": "#444748",
+                        "tertiary-fixed": "#fadfb2",
+                        "secondary": "#775a19",
+                        "outline-variant": "#c4c7c7",
+                        "primary-fixed": "#e5e2e1",
+                        "secondary-fixed-dim": "#e9c176",
+                        "surface-variant": "#e3e2e0",
+                        "inverse-surface": "#2f312f",
+                        "on-background": "#1a1c1a",
+                        "surface-tint": "#5f5e5e",
+                        "surface": "#faf9f6",
+                        "surface-container-lowest": "#ffffff",
+                        "on-tertiary-fixed-variant": "#554423",
+                        "tertiary-fixed-dim": "#dcc398",
+                        "surface-container-highest": "#e3e2e0",
+                        "tertiary": "#000000",
+                        "secondary-fixed": "#ffdea5",
+                        "primary-container": "#1c1b1b",
+                        "on-secondary-container": "#785a1a",
+                        "surface-container": "#efeeeb",
+                        "background": "#faf9f6",
+                        "error": "#ba1a1a",
+                        "error-container": "#ffdad6",
+                        "on-error-container": "#93000a",
+                        "primary-fixed-dim": "#c8c6c5",
+                        "surface-bright": "#faf9f6",
+                        "primary": "#000000",
+                        "on-tertiary-fixed": "#261900",
+                        "on-primary-container": "#858383",
+                        "on-tertiary-container": "#96815a",
+                        "surface-dim": "#dbdad7",
+                        "on-surface": "#1a1c1a",
+                        "on-primary-fixed": "#1c1b1b",
+                        "on-primary": "#ffffff",
+                        "surface-container-high": "#e9e8e5",
+                        "inverse-on-surface": "#f2f1ee",
+                        "on-secondary": "#ffffff",
+                        "surface-container-low": "#f4f3f1",
+                        "tertiary-container": "#261900",
+                        "outline": "#747878",
+                        "inverse-primary": "#c8c6c5",
+                        "on-secondary-fixed-variant": "#5d4201"
+                    },
+                    fontFamily: {
+                        "headline": ["Noto Serif"],
+                        "body": ["Manrope"],
+                        "label": ["Manrope"]
+                    },
+                    borderRadius: {"DEFAULT": "0px", "lg": "0px", "xl": "0px", "full": "9999px"},
+                },
+            },
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 300, 'GRAD' 0, 'opsz' 24;
+            display: inline-block;
+            vertical-align: middle;
+        }
+        ::-webkit-scrollbar { width: 4px; }
+        ::-webkit-scrollbar-track { background: #faf9f6; }
+        ::-webkit-scrollbar-thumb { background: #775a19; }
+    </style>
+</head>
+<body class="bg-surface font-body text-on-surface antialiased">
+<!-- TopNavBar -->
+<nav class="fixed top-0 w-full z-50 bg-[#faf9f6]/80 backdrop-blur-md">
+<div class="flex justify-between items-center w-full px-8 py-6 max-w-[1440px] mx-auto">
+<div class="flex items-center gap-12">
+<span class="font-headline text-2xl tracking-tighter font-bold text-primary">ATELIER</span>
+<div class="hidden md:flex gap-8">
+<a class="font-label uppercase tracking-[0.1em] text-xs font-medium text-on-surface opacity-80 hover:opacity-100 hover:text-secondary transition-all duration-500" href="#">Collections</a>
+<a class="font-label uppercase tracking-[0.1em] text-xs font-medium text-on-surface opacity-80 hover:opacity-100 hover:text-secondary transition-all duration-500" href="#">High Jewelry</a>
+<a class="font-label uppercase tracking-[0.1em] text-xs font-medium text-on-surface opacity-80 hover:opacity-100 hover:text-secondary transition-all duration-500" href="#">Bespoke</a>
+<a class="font-label uppercase tracking-[0.1em] text-xs font-medium text-on-surface opacity-80 hover:opacity-100 hover:text-secondary transition-all duration-500" href="#">Heritage</a>
+</div>
+</div>
+<div class="flex items-center gap-6">
+<span class="material-symbols-outlined text-primary cursor-pointer" data-icon="shopping_bag">shopping_bag</span>
+</div>
+</div>
+</nav>
+<main class="pt-32 pb-24 px-8 max-w-[1440px] mx-auto min-h-screen">
+<!-- Checkout Progress Header -->
+<header class="mb-16 text-center">
+<h1 class="font-headline text-4xl mb-12 tracking-tight">Checkout</h1>
+<div class="flex items-center justify-center max-w-2xl mx-auto px-4">
+<div class="flex flex-col items-center flex-1">
+<div class="w-10 h-10 flex items-center justify-center border border-secondary text-secondary mb-3">
+<span class="text-sm font-bold">01</span>
+</div>
+<span class="font-label text-[10px] uppercase tracking-widest font-semibold text-secondary">Information</span>
+</div>
+<div class="h-[1px] bg-outline-variant/30 flex-grow -mt-8"></div>
+<div class="flex flex-col items-center flex-1">
+<div class="w-10 h-10 flex items-center justify-center border border-outline-variant text-outline-variant mb-3">
+<span class="text-sm font-bold">02</span>
+</div>
+<span class="font-label text-[10px] uppercase tracking-widest font-semibold text-outline-variant">Shipping</span>
+</div>
+<div class="h-[1px] bg-outline-variant/30 flex-grow -mt-8"></div>
+<div class="flex flex-col items-center flex-1">
+<div class="w-10 h-10 flex items-center justify-center border border-outline-variant text-outline-variant mb-3">
+<span class="text-sm font-bold">03</span>
+</div>
+<span class="font-label text-[10px] uppercase tracking-widest font-semibold text-outline-variant">Payment</span>
+</div>
+</div>
+</header>
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-16">
+<!-- Left Side: Order & Information -->
+<div class="lg:col-span-7 space-y-16">
+<!-- Shopping Bag Table -->
+<section>
+<h2 class="font-label text-xs uppercase tracking-[0.2em] mb-8 text-on-surface-variant font-bold">Your Selection</h2>
+<div class="overflow-x-auto">
+<table class="w-full border-collapse">
+<thead>
+<tr class="text-left border-b border-outline-variant/10">
+<th class="pb-6 font-label text-[10px] uppercase tracking-widest text-on-surface-variant">Product</th>
+<th class="pb-6 font-label text-[10px] uppercase tracking-widest text-on-surface-variant text-center px-4">Quantity</th>
+<th class="pb-6 font-label text-[10px] uppercase tracking-widest text-on-surface-variant text-right">Subtotal</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-outline-variant/5">
+<!-- Item 1 -->
+<tr>
+<td class="py-8">
+<div class="flex items-center gap-6">
+<div class="w-24 h-32 bg-surface-variant flex-shrink-0">
+<img alt="Diamond Ring" class="w-full h-full object-cover grayscale" data-alt="extreme close up of a high-end diamond engagement ring with intricate platinum detailing on a clean neutral studio background" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDfMvcYlzl-UMuHGd6nCjmd_a_NBPr0WPmgPmcPDG1zJqA3fRIChguYV-SZ7YLOqjHg-VTm6mkD03p0dEr9ZIyP48zefVqdlB5E9vF1kDVkQmidY2CfagGwnPS0wIfrhEo4JF0V6M76RDKPH2w1SH86Wc988GcoZN4R4aVJi0q1EiiTGkdltHylUUgJJjOcX14nNjP0LCZK1X6XF1DJZ-4AZ0vMEnQBUezzFDUbWXQJnp4rkYMGQN56JhMWulxKUyFT3QvwNOpsOm8"/>
+</div>
+<div>
+<h3 class="font-headline text-lg mb-1">Ethereal Solitaire Ring</h3>
+<p class="font-label text-[10px] text-on-surface-variant uppercase tracking-widest mb-2">18K White Gold / 2.5ct Diamond</p>
+<button class="text-[10px] uppercase tracking-widest text-secondary hover:text-secondary-fixed-dim transition-colors">Remove</button>
+</div>
+</div>
+</td>
+<td class="py-8 text-center px-4">
+<div class="inline-flex items-center border border-outline-variant/20">
+<button class="px-3 py-1 hover:bg-surface-container transition-colors">-</button>
+<span class="px-4 font-medium text-sm">1</span>
+<button class="px-3 py-1 hover:bg-surface-container transition-colors">+</button>
+</div>
+</td>
+<td class="py-8 text-right">
+<span class="font-label text-sm font-semibold">$18,500.00</span>
+</td>
+</tr>
+<!-- Item 2 -->
+<tr>
+<td class="py-8">
+<div class="flex items-center gap-6">
+<div class="w-24 h-32 bg-surface-variant flex-shrink-0">
+<img alt="Gold Earrings" class="w-full h-full object-cover grayscale" data-alt="pair of luxury gold hoop earrings with delicate texture resting on a smooth off-white ceramic plate with soft shadows" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAvv49GLm-9j6vqR3CPh7JkBtrm92OOSVgIdGDlJS_vSpUUK8BsWUeV6Czwvnt6KWiY-PZuHRwbBJaQQXBPUzTb1bulmTooH2qoNT2MXGptcChvxn86wW4KR6EZl_-fpU8SG1TXrtAwqejl4AULHrm5pRjLIfO4p_ftlU_gKPutdHLzMemfFElztanQUDS8ciMrT4_hCwujWql5AIx2vYR5ACTMGjIWpWbOUXJ6f6VOQfdZO6-EvsBlP1hFy3Uo8Tw1wt-WfVlb4rk"/>
+</div>
+<div>
+<h3 class="font-headline text-lg mb-1">Celestial Drop Earrings</h3>
+<p class="font-label text-[10px] text-on-surface-variant uppercase tracking-widest mb-2">24K Yellow Gold / Sapphire</p>
+<button class="text-[10px] uppercase tracking-widest text-secondary hover:text-secondary-fixed-dim transition-colors">Remove</button>
+</div>
+</div>
+</td>
+<td class="py-8 text-center px-4">
+<div class="inline-flex items-center border border-outline-variant/20">
+<button class="px-3 py-1 hover:bg-surface-container transition-colors">-</button>
+<span class="px-4 font-medium text-sm">1</span>
+<button class="px-3 py-1 hover:bg-surface-container transition-colors">+</button>
+</div>
+</td>
+<td class="py-8 text-right">
+<span class="font-label text-sm font-semibold">$4,200.00</span>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<!-- Shipping Information Form -->
+<section class="bg-surface-container-low p-12">
+<h2 class="font-label text-xs uppercase tracking-[0.2em] mb-10 text-on-surface-variant font-bold">Contact Information</h2>
+<form class="space-y-10">
+<div class="grid grid-cols-1 md:grid-cols-2 gap-10">
+<div class="space-y-2">
+<label class="font-label text-[10px] uppercase tracking-widest text-on-surface-variant block">Email Address</label>
+<input class="w-full bg-transparent border-0 border-b border-outline-variant focus:border-secondary focus:ring-0 px-0 py-2 text-sm transition-colors" placeholder="customer@atelier.com" type="email"/>
+</div>
+<div class="space-y-2">
+<label class="font-label text-[10px] uppercase tracking-widest text-on-surface-variant block">Phone Number</label>
+<input class="w-full bg-transparent border-0 border-b border-outline-variant focus:border-secondary focus:ring-0 px-0 py-2 text-sm transition-colors" placeholder="+1 (000) 000-0000" type="tel"/>
+</div>
+</div>
+<div class="space-y-10">
+<h2 class="font-label text-xs uppercase tracking-[0.2em] pt-4 text-on-surface-variant font-bold">Shipping Address</h2>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-10">
+<div class="space-y-2">
+<label class="font-label text-[10px] uppercase tracking-widest text-on-surface-variant block">First Name</label>
+<input class="w-full bg-transparent border-0 border-b border-outline-variant focus:border-secondary focus:ring-0 px-0 py-2 text-sm transition-colors" type="text"/>
+</div>
+<div class="space-y-2">
+<label class="font-label text-[10px] uppercase tracking-widest text-on-surface-variant block">Last Name</label>
+<input class="w-full bg-transparent border-0 border-b border-outline-variant focus:border-secondary focus:ring-0 px-0 py-2 text-sm transition-colors" type="text"/>
+</div>
+</div>
+<div class="space-y-2">
+<label class="font-label text-[10px] uppercase tracking-widest text-on-surface-variant block">Street Address</label>
+<input class="w-full bg-transparent border-0 border-b border-outline-variant focus:border-secondary focus:ring-0 px-0 py-2 text-sm transition-colors" type="text"/>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-10">
+<div class="space-y-2">
+<label class="font-label text-[10px] uppercase tracking-widest text-on-surface-variant block">City</label>
+<input class="w-full bg-transparent border-0 border-b border-outline-variant focus:border-secondary focus:ring-0 px-0 py-2 text-sm transition-colors" type="text"/>
+</div>
+<div class="space-y-2">
+<label class="font-label text-[10px] uppercase tracking-widest text-on-surface-variant block">State/Region</label>
+<input class="w-full bg-transparent border-0 border-b border-outline-variant focus:border-secondary focus:ring-0 px-0 py-2 text-sm transition-colors" type="text"/>
+</div>
+<div class="space-y-2">
+<label class="font-label text-[10px] uppercase tracking-widest text-on-surface-variant block">Postal Code</label>
+<input class="w-full bg-transparent border-0 border-b border-outline-variant focus:border-secondary focus:ring-0 px-0 py-2 text-sm transition-colors" type="text"/>
+</div>
+</div>
+</div>
+</form>
+</section>
+</div>
+<!-- Right Side: Order Summary -->
+<aside class="lg:col-span-5">
+<div class="sticky top-32 space-y-8">
+<div class="bg-primary-container text-on-primary p-12">
+<h2 class="font-label text-xs uppercase tracking-[0.2em] mb-10 text-on-primary-container font-bold">Order Summary</h2>
+<div class="space-y-6 mb-10">
+<div class="flex justify-between items-center">
+<span class="font-label text-xs uppercase tracking-widest text-on-primary-container">Subtotal</span>
+<span class="font-label text-sm">$22,700.00</span>
+</div>
+<div class="flex justify-between items-center">
+<span class="font-label text-xs uppercase tracking-widest text-on-primary-container">Shipping (Express)</span>
+<span class="font-label text-sm">Complimentary</span>
+</div>
+<div class="flex justify-between items-center">
+<span class="font-label text-xs uppercase tracking-widest text-on-primary-container">Estimated Taxes</span>
+<span class="font-label text-sm">$1,816.00</span>
+</div>
+</div>
+<div class="border-t border-on-primary-container/20 pt-8 mb-12">
+<div class="flex justify-between items-center">
+<span class="font-headline text-lg uppercase tracking-wider">Total</span>
+<span class="font-headline text-2xl font-bold">$24,516.00</span>
+</div>
+</div>
+<button class="w-full bg-secondary text-on-primary py-5 font-label text-xs uppercase tracking-[0.2em] font-bold hover:bg-secondary-fixed-dim transition-all duration-500 mb-6">
+                            Proceed to Shipping
+                        </button>
+<div class="flex flex-col gap-4 text-center">
+<div class="flex items-center justify-center gap-2 opacity-60">
+<span class="material-symbols-outlined text-sm" data-icon="lock">lock</span>
+<span class="font-label text-[10px] uppercase tracking-widest">Secure 256-Bit SSL Encryption</span>
+</div>
+</div>
+</div>
+<!-- Trust Signals -->
+<div class="bg-surface-container p-8 space-y-6">
+<div class="flex items-start gap-4">
+<span class="material-symbols-outlined text-secondary" data-icon="verified">verified</span>
+<div>
+<h4 class="font-label text-[10px] uppercase tracking-widest font-bold mb-1">Authenticity Guaranteed</h4>
+<p class="text-xs text-on-surface-variant leading-relaxed">Each piece is accompanied by a GIA certification and Atelier heritage report.</p>
+</div>
+</div>
+<div class="flex items-start gap-4">
+<span class="material-symbols-outlined text-secondary" data-icon="local_shipping">local_shipping</span>
+<div>
+<h4 class="font-label text-[10px] uppercase tracking-widest font-bold mb-1">Insured Delivery</h4>
+<p class="text-xs text-on-surface-variant leading-relaxed">Complimentary worldwide shipping with full transit insurance coverage.</p>
+</div>
+</div>
+</div>
+</div>
+</aside>
+</div>
+</main>
+<!-- Footer -->
+<footer class="bg-primary-container dark:bg-black w-full pt-20 pb-10">
+<div class="grid grid-cols-1 md:grid-cols-4 gap-12 px-12 w-full max-w-[1440px] mx-auto">
+<div class="md:col-span-1">
+<span class="font-headline text-xl text-on-primary mb-4 block">ATELIER</span>
+<p class="text-on-primary/60 text-sm font-body leading-relaxed max-w-xs">Crafting exceptional narratives through rare stones and timeless design since 1924.</p>
+</div>
+<div>
+<h4 class="font-label text-[10px] uppercase tracking-widest text-on-primary mb-6 font-bold">Discover</h4>
+<div class="flex flex-col gap-4">
+<a class="font-body text-sm text-on-primary/60 hover:text-on-primary transition-colors" href="#">Our Story</a>
+<a class="font-body text-sm text-on-primary/60 hover:text-on-primary transition-colors" href="#">Craftsmanship</a>
+<a class="font-body text-sm text-on-primary/60 hover:text-on-primary transition-colors" href="#">Sustainability</a>
+</div>
+</div>
+<div>
+<h4 class="font-label text-[10px] uppercase tracking-widest text-on-primary mb-6 font-bold">Client Care</h4>
+<div class="flex flex-col gap-4">
+<a class="font-body text-sm text-on-primary/60 hover:text-on-primary transition-colors" href="#">Contact Us</a>
+<a class="font-body text-sm text-on-primary/60 hover:text-on-primary transition-colors" href="#">Shipping &amp; Returns</a>
+<a class="font-body text-sm text-on-primary/60 hover:text-on-primary transition-colors" href="#">Bespoke Services</a>
+</div>
+</div>
+<div>
+<h4 class="font-label text-[10px] uppercase tracking-widest text-on-primary mb-6 font-bold">Newsletter</h4>
+<p class="text-xs text-on-primary/60 mb-6">Join the Digital Atelier for early access to high jewelry releases.</p>
+<div class="flex border-b border-on-primary/20 pb-2">
+<input class="bg-transparent border-0 focus:ring-0 text-sm text-on-primary w-full p-0 placeholder:text-on-primary/30" placeholder="Your email" type="email"/>
+<button class="text-secondary hover:text-secondary-fixed-dim transition-colors">
+<span class="material-symbols-outlined">east</span>
+</button>
+</div>
+</div>
+</div>
+<div class="mt-20 px-12 border-t border-on-primary/5 pt-10 flex flex-col md:flex-row justify-between items-center gap-6">
+<span class="font-body text-[10px] tracking-wide text-on-primary/40">© 2024 THE DIGITAL ATELIER. ALL RIGHTS RESERVED.</span>
+<div class="flex gap-8">
+<a class="text-[10px] uppercase tracking-[0.2em] text-on-primary/40 hover:text-on-primary transition-colors" href="#">Privacy</a>
+<a class="text-[10px] uppercase tracking-[0.2em] text-on-primary/40 hover:text-on-primary transition-colors" href="#">Terms</a>
+<a class="text-[10px] uppercase tracking-[0.2em] text-on-primary/40 hover:text-on-primary transition-colors" href="#">Cookie Policy</a>
+</div>
+</div>
+</footer>
+</body></html>

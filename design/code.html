@@ -1,0 +1,609 @@
+<!DOCTYPE html>
+<html lang="en" class="">
+<head>
+    <meta charset="utf-8"/>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+    <title>ATELIER | High Jewelry & Artisanal Design</title>
+    
+    <!-- External Libraries -->
+    <script type="text/javascript" nonce="96ee890d73be47a28ca9c1d8f63" src="//injections.adguard.org?ts=1774709780968&amp;type=content-script&amp;dmn=contribution.usercontent.google.com&amp;url=https%3A%2F%2Fcontribution.usercontent.google.com%2Fdownload%3Fc%3DCgthaWRhX2NvZGVmeBJ7Eh1hcHBfY29tcGFuaW9uX2dlbmVyYXRlZF9maWxlcxpaCiVodG1sX2ZjZjA5ZTcyNDc4ZDQ2NGU4ZmZiM2NmZTI5NjllMGIzEgsSBxC-r4XAvAYYAZIBIwoKcHJvamVjdF9pZBIVQhM0NjY3NTExMTkxNzcyNzYxNDM3%26filename%3D%26opi%3D89354086&amp;app=chrome.exe&amp;css=3&amp;js=1&amp;rel=1&amp;rji=1&amp;sbe=1"></script><script type="text/javascript" nonce="96ee890d73be47a28ca9c1d8f63" src="//injections.adguard.org?ts=1774709780968&amp;name=AdGuard%20Assistant&amp;name=AdGuard%20Extra&amp;type=user-script"></script><script src="https://unpkg.com/react@18/umd/react.development.js"></script>
+    <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/history@5/umd/history.development.js"></script>
+    <script src="https://unpkg.com/react-router@6.3.0/umd/react-router.development.js"></script>
+    <script src="https://unpkg.com/react-router-dom@6.3.0/umd/react-router-dom.development.js"></script>
+    <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif:ital,wght@0,400;0,700;1,400&family=Manrope:wght@300;400;500;600;700;800&display=swap" rel="stylesheet"/>
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet">
+
+    <script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "secondary-container": "#fed488",
+                        "on-tertiary": "#ffffff",
+                        "on-error": "#ffffff",
+                        "on-secondary-fixed": "#261900",
+                        "on-primary-fixed-variant": "#474746",
+                        "on-surface-variant": "#444748",
+                        "tertiary-fixed": "#fadfb2",
+                        "secondary": "#775a19",
+                        "outline-variant": "#c4c7c7",
+                        "primary-fixed": "#e5e2e1",
+                        "secondary-fixed-dim": "#e9c176",
+                        "surface-variant": "#e3e2e0",
+                        "inverse-surface": "#2f312f",
+                        "on-background": "#1a1c1a",
+                        "surface-tint": "#5f5e5e",
+                        "surface": "#faf9f6",
+                        "surface-container-lowest": "#ffffff",
+                        "on-tertiary-fixed-variant": "#554423",
+                        "tertiary-fixed-dim": "#dcc398",
+                        "surface-container-highest": "#e3e2e0",
+                        "tertiary": "#000000",
+                        "secondary-fixed": "#ffdea5",
+                        "primary-container": "#1c1b1b",
+                        "on-secondary-container": "#785a1a",
+                        "surface-container": "#efeeeb",
+                        "background": "#faf9f6",
+                        "error": "#ba1a1a",
+                        "error-container": "#ffdad6",
+                        "on-error-container": "#93000a",
+                        "primary-fixed-dim": "#c8c6c5",
+                        "surface-bright": "#faf9f6",
+                        "primary": "#000000",
+                        "on-tertiary-fixed": "#261900",
+                        "on-primary-container": "#858383",
+                        "on-tertiary-container": "#96815a",
+                        "surface-dim": "#dbdad7",
+                        "on-surface": "#1a1c1a",
+                        "on-primary-fixed": "#1c1b1b",
+                        "on-primary": "#ffffff",
+                        "surface-container-high": "#e9e8e5",
+                        "inverse-on-surface": "#f2f1ee",
+                        "on-secondary": "#ffffff",
+                        "surface-container-low": "#f4f3f1",
+                        "tertiary-container": "#261900",
+                        "outline": "#747878",
+                        "inverse-primary": "#c8c6c5",
+                        "on-secondary-fixed-variant": "#5d4201"
+                    },
+                    fontFamily: {
+                        "headline": ["Noto Serif"],
+                        "body": ["Manrope"],
+                        "label": ["Manrope"]
+                    },
+                    borderRadius: {"DEFAULT": "0px", "lg": "0px", "xl": "0px", "full": "9999px"},
+                },
+            },
+        }
+    </script>
+
+    <style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 300, 'GRAD' 0, 'opsz' 24;
+            font-size: 20px;
+        }
+        body {
+            font-family: 'Manrope', sans-serif;
+            -webkit-font-smoothing: antialiased;
+        }
+        .serif-heading {
+            font-family: 'Noto Serif', serif;
+        }
+        .gold-gradient {
+            background: linear-gradient(90deg, #775a19 0%, #e9c176 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .hide-scrollbar::-webkit-scrollbar { display: none; }
+        .hide-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+        
+        /* Smooth scrolling for page navigation */
+        html { scroll-behavior: smooth; }
+    </style>
+</head>
+<body class="bg-surface text-on-surface selection:bg-secondary-container selection:text-on-secondary-container">
+    <div id="root"></div>
+
+    <script type="text/babel">
+        const { useState, useEffect } = React;
+        const { createRoot } = ReactDOM;
+        const { MemoryRouter, Routes, Route, Link, useNavigate, useLocation } = ReactRouterDOM;
+
+        // --- Common Components ---
+
+        const Navigation = () => {
+            const location = useLocation();
+            const isWhiteText = location.pathname === '/';
+            
+            return (
+                <nav className="fixed top-0 w-full z-50 bg-[#faf9f6]/80 dark:bg-[#1a1a1a]/80 backdrop-blur-md">
+                    <div className="flex justify-between items-center w-full px-8 py-6 max-w-[1440px] mx-auto">
+                        <div className="flex-1 hidden md:flex gap-8 items-center">
+                            <Link to="/collections" className={`font-headline uppercase tracking-[0.1em] text-xs font-medium ${location.pathname === '/collections' ? 'text-[#775a19] border-b border-[#775a19]' : 'text-[#1a1a1a] dark:text-[#faf9f6] opacity-80 hover:opacity-100'} pb-1 transition-all duration-500`}>Collections</Link>
+                            <Link to="/product" className="font-headline uppercase tracking-[0.1em] text-xs font-medium text-[#1a1a1a] dark:text-[#faf9f6] opacity-80 hover:opacity-100 hover:text-[#775a19] transition-all duration-500">High Jewelry</Link>
+                            <a className="font-headline uppercase tracking-[0.1em] text-xs font-medium text-[#1a1a1a] dark:text-[#faf9f6] opacity-80 hover:opacity-100 hover:text-[#775a19] transition-all duration-500" href="#">Bespoke</a>
+                            <a className="font-headline uppercase tracking-[0.1em] text-xs font-medium text-[#1a1a1a] dark:text-[#faf9f6] opacity-80 hover:opacity-100 hover:text-[#775a19] transition-all duration-500" href="#">Heritage</a>
+                        </div>
+                        <div className="flex-1 flex justify-start md:justify-center">
+                            <Link to="/" className="font-headline text-2xl tracking-tighter font-bold text-[#1a1a1a] dark:text-[#faf9f6]">ATELIER</Link>
+                        </div>
+                        <div className="flex-1 flex justify-end items-center gap-6">
+                            <button className="text-[#1a1a1a] dark:text-[#faf9f6] opacity-80 hover:opacity-100 transition-opacity">
+                                <span className="material-symbols-outlined">search</span>
+                            </button>
+                            <Link to="/checkout" className="text-[#1a1a1a] dark:text-[#faf9f6] opacity-80 hover:opacity-100 transition-opacity">
+                                <span className="material-symbols-outlined">shopping_bag</span>
+                            </Link>
+                            <button className="md:hidden text-[#1a1a1a] dark:text-[#faf9f6]">
+                                <span className="material-symbols-outlined">menu</span>
+                            </button>
+                        </div>
+                    </div>
+                </nav>
+            );
+        };
+
+        const Footer = () => (
+            <footer className="bg-[#1c1b1b] dark:bg-[#000000] w-full pt-20 pb-10 mt-auto">
+                <div className="grid grid-cols-1 md:grid-cols-4 gap-12 px-12 w-full mx-auto max-w-[1440px]">
+                    <div className="col-span-1 md:col-span-1">
+                        <span className="font-headline text-xl text-[#faf9f6] mb-4 block">ATELIER</span>
+                        <p className="text-[#faf9f6]/60 font-body text-sm leading-relaxed max-w-xs">
+                            Curating the world's most exceptional jewelry since 1924. From our workshop to your collection.
+                        </p>
+                    </div>
+                    <div className="space-y-4">
+                        <h4 className="text-[#faf9f6] font-body text-sm font-bold tracking-widest uppercase mb-6">Collections</h4>
+                        <ul className="space-y-3">
+                            <li><a className="text-[#faf9f6]/60 hover:text-[#faf9f6] transition-colors duration-300 font-body text-sm tracking-wide" href="#">High Jewelry</a></li>
+                            <li><a className="text-[#faf9f6]/60 hover:text-[#faf9f6] transition-colors duration-300 font-body text-sm tracking-wide" href="#">Engagement</a></li>
+                            <li><a className="text-[#faf9f6]/60 hover:text-[#faf9f6] transition-colors duration-300 font-body text-sm tracking-wide" href="#">Rare Watches</a></li>
+                            <li><a className="text-[#faf9f6]/60 hover:text-[#faf9f6] transition-colors duration-300 font-body text-sm tracking-wide" href="#">Gifting</a></li>
+                        </ul>
+                    </div>
+                    <div className="space-y-4">
+                        <h4 className="text-[#faf9f6] font-body text-sm font-bold tracking-widest uppercase mb-6">The House</h4>
+                        <ul className="space-y-3">
+                            <li><a className="text-[#faf9f6]/60 hover:text-[#faf9f6] transition-colors duration-300 font-body text-sm tracking-wide" href="#">Our Story</a></li>
+                            <li><a className="text-[#faf9f6]/60 hover:text-[#faf9f6] transition-colors duration-300 font-body text-sm tracking-wide" href="#">Craftsmanship</a></li>
+                            <li><a className="text-[#faf9f6]/60 hover:text-[#faf9f6] transition-colors duration-300 font-body text-sm tracking-wide" href="#">Sustainability</a></li>
+                            <li><a className="text-[#faf9f6]/60 hover:text-[#faf9f6] transition-colors duration-300 font-body text-sm tracking-wide" href="#">Contact</a></li>
+                        </ul>
+                    </div>
+                    <div className="space-y-4">
+                        <h4 className="text-[#faf9f6] font-body text-sm font-bold tracking-widest uppercase mb-6">Services</h4>
+                        <ul className="space-y-3">
+                            <li><a className="text-[#faf9f6]/60 hover:text-[#faf9f6] transition-colors duration-300 font-body text-sm tracking-wide" href="#">Bespoke Design</a></li>
+                            <li><a className="text-[#faf9f6]/60 hover:text-[#faf9f6] transition-colors duration-300 font-body text-sm tracking-wide" href="#">Repairs & Care</a></li>
+                            <li><a className="text-[#faf9f6]/60 hover:text-[#faf9f6] transition-colors duration-300 font-body text-sm tracking-wide" href="#">Shipping</a></li>
+                            <li><a className="text-[#faf9f6]/60 hover:text-[#faf9f6] transition-colors duration-300 font-body text-sm tracking-wide" href="#">Book Appointment</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div className="max-w-[1440px] mx-auto px-12 mt-20 pt-10 border-t border-white/5 flex flex-col md:flex-row justify-between items-center gap-6">
+                    <span className="text-[#faf9f6]/40 font-body text-xs tracking-widest uppercase">© 2024 THE DIGITAL ATELIER. ALL RIGHTS RESERVED.</span>
+                    <div className="flex gap-8">
+                        <a className="text-[#faf9f6]/40 hover:text-[#faf9f6] text-xs transition-colors" href="#">INSTAGRAM</a>
+                        <a className="text-[#faf9f6]/40 hover:text-[#faf9f6] text-xs transition-colors" href="#">PINTEREST</a>
+                        <a className="text-[#faf9f6]/40 hover:text-[#faf9f6] text-xs transition-colors" href="#">LINKEDIN</a>
+                    </div>
+                </div>
+            </footer>
+        );
+
+        // --- Screens ---
+
+        const HomePage = () => {
+            const navigate = useNavigate();
+            return (
+                <main>
+                    {/* Hero Section */}
+                    <section className="relative h-screen flex items-center bg-surface overflow-hidden">
+                        <div className="absolute inset-0 w-full h-full">
+                            <img className="w-full h-full object-cover grayscale-[20%]" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAJwtmmWGsfUsWc3ISOnP21YXEGf22C_MmaQq5RoYQSj0Gl-gtplCGhVmnmQBYkZJOodFtDtHes0l7itYlC-x05Svf3kyOj0JtVr1N5HQZGbOrWvXJUjbGdMJyVcMKnRkqLXZoyuGFVn4FsAG_ItvkxfUZiJ87uZLYxW_YRlzYjz65tinWYbLPFe3gBvSGW03QyjR2h02iTffrPKupD5EJqdTxnqNqEteBywUGLM7IJYwKfChKDxWy-TCovXX7qNl-9xQFnahazC-w" alt="Brilliant diamond necklace" />
+                            <div className="absolute inset-0 bg-gradient-to-r from-surface via-surface/40 to-transparent"></div>
+                        </div>
+                        <div className="relative z-10 max-w-[1440px] mx-auto px-12 w-full">
+                            <div className="max-w-2xl">
+                                <span className="text-xs uppercase tracking-[0.2em] text-secondary font-medium mb-6 block">Exquisite Artistry</span>
+                                <h1 className="serif-heading text-7xl md:text-8xl font-bold text-primary leading-[0.9] tracking-tighter mb-8">
+                                    The Luminance <br/> Collection
+                                </h1>
+                                <p className="font-body text-lg text-on-surface-variant max-w-md mb-10 leading-relaxed">
+                                    Discover a masterwork of rare gemstones and architectural precision, handcrafted for those who define elegance.
+                                </p>
+                                <div className="flex items-center gap-10">
+                                    <button onClick={() => navigate('/collections')} className="bg-primary text-on-primary px-10 py-5 text-sm uppercase tracking-widest font-bold hover:bg-primary-container transition-all duration-500">
+                                        Explore Collection
+                                    </button>
+                                    <a className="text-secondary border-b border-secondary/30 pb-1 text-sm uppercase tracking-widest font-bold hover:border-secondary transition-all" href="#">
+                                        Book a Viewing
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+
+                    {/* Asymmetric Featured Collection */}
+                    <section className="py-32 bg-surface-container-low">
+                        <div className="max-w-[1440px] mx-auto px-12">
+                            <div className="grid grid-cols-12 gap-0 items-center">
+                                <div className="col-span-12 md:col-span-7 relative">
+                                    <img className="w-full aspect-[4/5] object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDJv6VfRLTFOBhC5bBS0EtUIgEEwgP__-IcoQl_Xr6oz8Exbe5JocwxOAzLGTN6XxMfa3Z1xji3flEvPM1DbAzOlkCDKsGUINelRRYS-tonYwFPbHyPNs2xlphGpbNKbMcU-oqHx11KN36-r2o5fxPCDkBhqEjXDGHNXsNFnSpkBu3vu8fBnp84Hb-OVw_9_5DL4gJJYmNk1cmGNArHUV0xplcCf__ZZ8vfkk11I8AO19lFAZGrb-3uXRGpJzh8Ob7r1MENs07OI3g" alt="Emerald Ring" />
+                                </div>
+                                <div className="col-span-12 md:col-span-5 bg-surface-container-lowest p-12 md:-ml-24 relative z-20 shadow-sm">
+                                    <span className="text-xs uppercase tracking-[0.15em] text-secondary-fixed-dim mb-4 block">Archive Selection</span>
+                                    <h2 className="serif-heading text-5xl font-bold text-primary mb-6 leading-tight">The Heritage <br/> Collection</h2>
+                                    <p className="font-body text-on-surface-variant mb-8 leading-relaxed">
+                                        A tribute to our 1924 origins, reimagined for the modern aesthetic. Each piece is a dialogue between history and contemporary form.
+                                    </p>
+                                    <button className="text-secondary border-b-2 border-secondary pb-1 font-bold tracking-widest text-sm uppercase hover:text-primary hover:border-primary transition-all duration-300">
+                                        View The Archive
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+
+                    {/* Bento Grid Gallery */}
+                    <section className="py-32 bg-surface">
+                        <div className="max-w-[1440px] mx-auto px-12">
+                            <div className="flex flex-col md:flex-row justify-between items-end mb-20">
+                                <div>
+                                    <span className="text-xs uppercase tracking-[0.2em] text-secondary mb-4 block">Categories</span>
+                                    <h2 className="serif-heading text-5xl font-bold text-primary">Signature Works</h2>
+                                </div>
+                                <p className="max-w-xs text-on-surface-variant text-sm font-medium leading-relaxed opacity-60">
+                                    CURATED SELECTIONS FROM OUR MASTER CRAFTSMEN IN PARIS AND GENEVA.
+                                </p>
+                            </div>
+                            <div className="grid grid-cols-1 md:grid-cols-4 grid-rows-2 gap-6 h-auto md:h-[800px]">
+                                <div className="md:col-span-2 md:row-span-2 relative group overflow-hidden">
+                                    <img className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBcLUV3fY-Hn30KlcHWLxwCuTin1ljR9SrRV6WbtfcQjM84ALWbKgM4xr5WR_WDV6rUg-w6mPprjMDCv6SuPfcNYJepRX_DtiutyCH6MvzLRpCMP3jbot8jpjAqdgRY-zhLLFF8ChWWnEe-tZy0w9Fih1RgL0EM-mly6NoCH7fXWDHTW2Cpdrj9KvP9ag-LcQiGLR-uZQ4FwbP65k_O-feNlAXCL_YOSukV09WPF4jAO0Cx9mUYljUw6zOgprcziMUOjLYvauBSTIM" alt="Bridal Couture" />
+                                    <div className="absolute inset-0 bg-black/20 opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex items-end p-10">
+                                        <span className="text-white serif-heading text-3xl">Bridal Couture</span>
+                                    </div>
+                                </div>
+                                <div className="md:col-span-2 md:row-span-1 relative group overflow-hidden">
+                                    <img className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBA6kGhq7HFZsiYMJSu9E1QjOeTe8D9-bJqRP5qhVqn9s2RZSWXGI4YFeO8QGmTh6BpcQwR-l3_EF62hhJhGeCxysGU0nxrbr1OxEvfDRJEwkKlU1GFdLZkIznvBj3Z-ruSsDTWz51QGfDRrqxY9nHYGwqAfSZbphJnoCdwK8R48img04iT4oPbYABelsC4YOb8tr3R_uH6Zo_oCteN0YeIHji9ZD3Q3acyDMcnT5athOLCC3Q5vx0ipaxeREGrVW1FEQygK7Kezr4" alt="L'Art de Perle" />
+                                    <div className="absolute inset-0 bg-black/20 opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex items-end p-10">
+                                        <span className="text-white serif-heading text-3xl">L'Art de Perle</span>
+                                    </div>
+                                </div>
+                                <div className="md:col-span-1 md:row-span-1 relative group overflow-hidden">
+                                    <img className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDauhAoKqV-iBxJKFvJIG7HfBGw_GtF5GW_dZM3eOkcFFJ5RSuIEjOuV5JuKmyBvkaxIi7JiVd1BrXTqWJmigLTbyF9_Iv9avj7XuqQ99UN9zQLqffAlWd-LIc6I8j5MLTk5Np74lzgYIiAwjtu3oEzilXtjv45BwbiiF5N_3BKOE8sonXwBjrQUThcY3hg3kOs6a2EJjqsejucD6SilMNy0SZYF1b0xuRz8XU0SK6u4MOsn38XHFqobSbSEahqg-FlmFiLuQ2CtmE" alt="Bespoke Men" />
+                                    <div className="absolute inset-0 bg-black/20 opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex items-end p-6">
+                                        <span className="text-white serif-heading text-xl">Bespoke Men</span>
+                                    </div>
+                                </div>
+                                <div className="md:col-span-1 md:row-span-1 relative group overflow-hidden">
+                                    <img className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCCOn2xpwjgsJErAny2UIM1tPJkACxt1itks9yKuzPDWzhSPshKF7LfoP6RjnCUb-oxKD6vxUcn4eAE2LtQuquk-iWCBwqyWLR2R46jWguAdJPwcco4ODFxwrFlehJhlg9dfsRygh3MEXG1R5NJIqvzuYYQfpp-HMqSs6teME-IweJpAaz3EFHXu-8bizT31dcazsIx9XDixNr6AolXBKZEc_9k5cCcY-wYWPee552YeRcbRsgyIYhZn889kWKLZ4dru3uJzn8n0t8" alt="Horology" />
+                                    <div className="absolute inset-0 bg-black/20 opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex items-end p-6">
+                                        <span className="text-white serif-heading text-xl">Horology</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+
+                    {/* Brand Story Section */}
+                    <section className="py-40 bg-primary-container text-surface">
+                        <div className="max-w-[1440px] mx-auto px-12">
+                            <div className="grid grid-cols-1 md:grid-cols-2 gap-24 items-center">
+                                <div>
+                                    <h2 className="serif-heading text-6xl font-bold mb-10 leading-tight">Beyond The <br/> Brilliant Cut.</h2>
+                                    <div className="space-y-6 opacity-80 font-body text-lg leading-relaxed max-w-lg">
+                                        <p>Founded on the principles of quiet luxury, ATELIER represents the pinnacle of jewelry craftsmanship. Every stone is ethically sourced and hand-selected for its soul and character.</p>
+                                        <p>Our artisans spend hundreds of hours on a single piece, ensuring that what rests against your skin is not just jewelry, but a legacy of human touch and artistic vision.</p>
+                                    </div>
+                                    <div className="mt-12 flex gap-12 border-t border-surface/10 pt-12">
+                                        <div>
+                                            <span className="block text-3xl serif-heading font-bold text-secondary-fixed-dim">100+</span>
+                                            <span className="text-xs uppercase tracking-widest opacity-60">Master Artisans</span>
+                                        </div>
+                                        <div>
+                                            <span className="block text-3xl serif-heading font-bold text-secondary-fixed-dim">1924</span>
+                                            <span className="text-xs uppercase tracking-widest opacity-60">Est. Paris</span>
+                                        </div>
+                                        <div>
+                                            <span className="block text-3xl serif-heading font-bold text-secondary-fixed-dim">0%</span>
+                                            <span className="text-xs uppercase tracking-widest opacity-60">Conflict Sourcing</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div className="relative">
+                                    <div className="absolute -top-10 -left-10 w-40 h-40 border-l border-t border-secondary/30"></div>
+                                    <img className="w-full grayscale brightness-75 contrast-125 shadow-2xl" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCb3Nb6t_PTpVUdgGfDid_cQn_w5WRxnKsGNMXgN3U5lQ2xp0xD6cRbVTgBo-T5YkCgFu-nefynYVmy4Idl--MpPee7dHGHmQRXtsHMayaCb5SAxXgH7hnFKO2S-RmOTiC9uWFAXBM1nJpi9bsDLHyrmatKrOEv2tJzvpsar5XA0NBZrmJoVrpNSD3cl9YFfP_-qeTwa8gdr3A3q8kMYBx8LSkpyWkRf3Mh8xO4o7GWdJEDACmG6pRLM_068pXBJHAG3vcsX7mrODI" alt="Artisan workbench" />
+                                    <div className="absolute -bottom-10 -right-10 w-40 h-40 border-r border-b border-secondary/30"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+
+                    {/* Newsletter */}
+                    <section className="py-32 bg-surface-container">
+                        <div className="max-w-2xl mx-auto px-6 text-center">
+                            <span className="text-xs uppercase tracking-[0.2em] text-secondary mb-6 block">Join the Circle</span>
+                            <h2 className="serif-heading text-4xl font-bold text-primary mb-8">Invitations to Private Viewings</h2>
+                            <p className="text-on-surface-variant mb-12">Be the first to explore limited collections and heritage releases.</p>
+                            <form className="flex flex-col md:flex-row gap-4">
+                                <input className="flex-grow bg-transparent border-b border-outline-variant focus:border-secondary outline-none py-4 uppercase text-xs tracking-widest px-2" placeholder="YOUR EMAIL ADDRESS" type="email"/>
+                                <button className="bg-primary text-on-primary px-12 py-4 text-xs font-bold uppercase tracking-widest hover:bg-primary-container transition-all">Subscribe</button>
+                            </form>
+                        </div>
+                    </section>
+                </main>
+            );
+        };
+
+        const CollectionsPage = () => {
+            const navigate = useNavigate();
+            return (
+                <main className="pt-32 pb-24 px-8 max-w-[1440px] mx-auto">
+                    <header className="mb-16">
+                        <div className="flex flex-col md:flex-row md:items-end justify-between gap-8">
+                            <div className="max-w-2xl">
+                                <span className="label-md uppercase text-secondary font-medium tracking-[0.2em] text-xs block mb-4">The Permanent Collection</span>
+                                <h1 className="serif-heading text-5xl md:text-7xl font-bold tracking-tight mb-6">Celestial Artifacts</h1>
+                                <p className="text-body-lg text-on-surface-variant font-light leading-relaxed max-w-lg">
+                                    Inspired by the mathematical precision of the cosmos. Each piece is hand-carved in our Parisian atelier using reclaimed gold and ethically sourced stones.
+                                </p>
+                            </div>
+                            <div className="flex items-center gap-4 text-xs font-medium uppercase tracking-widest border-b border-outline-variant/30 pb-2">
+                                <span className="text-on-surface-variant">Sort by:</span>
+                                <button className="hover:text-secondary transition-colors">Popularity</button>
+                                <span className="text-outline-variant">/</span>
+                                <button className="text-secondary">Newest</button>
+                                <span className="text-outline-variant">/</span>
+                                <button className="hover:text-secondary transition-colors">Price</button>
+                            </div>
+                        </div>
+                    </header>
+                    
+                    <div className="flex flex-col md:flex-row gap-16">
+                        <aside className="w-full md:w-64 flex-shrink-0 space-y-12">
+                            <div>
+                                <h3 className="label-md uppercase font-bold tracking-widest text-xs mb-6 pb-2 border-b border-outline-variant/20">Category</h3>
+                                <ul className="space-y-4 text-sm">
+                                    <li className="flex justify-between items-center group cursor-pointer"><span className="group-hover:translate-x-1 transition-transform">All Objects</span><span className="text-[10px] opacity-40">24</span></li>
+                                    <li className="flex justify-between items-center group text-secondary font-medium cursor-pointer"><span className="group-hover:translate-x-1 transition-transform">Rings</span><span className="text-[10px] opacity-40">08</span></li>
+                                    <li className="flex justify-between items-center group cursor-pointer"><span className="group-hover:translate-x-1 transition-transform">Earrings</span><span className="text-[10px] opacity-40">06</span></li>
+                                    <li className="flex justify-between items-center group cursor-pointer"><span className="group-hover:translate-x-1 transition-transform">Necklaces</span><span className="text-[10px] opacity-40">04</span></li>
+                                </ul>
+                            </div>
+                            <div>
+                                <h3 className="label-md uppercase font-bold tracking-widest text-xs mb-6 pb-2 border-b border-outline-variant/20">Material</h3>
+                                <div className="space-y-3">
+                                    {["18k Yellow Gold", "Platinum 950", "Rose Gold Bloom"].map(m => (
+                                        <label key={m} className="flex items-center group cursor-pointer">
+                                            <input className="w-4 h-4 border-outline-variant rounded-none checked:bg-secondary focus:ring-0 mr-3" type="checkbox"/>
+                                            <span className="text-sm opacity-80 group-hover:opacity-100 transition-opacity">{m}</span>
+                                        </label>
+                                    ))}
+                                </div>
+                            </div>
+                            <div className="pt-8">
+                                <div className="bg-primary-container p-6 text-on-primary">
+                                    <p className="serif-heading italic text-lg mb-4">Bespoke Inquiry</p>
+                                    <p className="text-[11px] uppercase tracking-widest leading-relaxed opacity-70 mb-6">Cannot find your perfect alignment? Our master artisans create unique commissions.</p>
+                                    <a className="text-[10px] uppercase tracking-[0.2em] font-bold text-secondary-fixed-dim border-b border-secondary-fixed-dim/30 pb-1 hover:border-secondary-fixed-dim transition-all" href="#">Start Consultation</a>
+                                </div>
+                            </div>
+                        </aside>
+
+                        <section className="flex-1">
+                            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 gap-x-12 gap-y-20">
+                                {/* Product Card 1 */}
+                                <div className="group cursor-pointer" onClick={() => navigate('/product')}>
+                                    <div className="relative overflow-hidden bg-surface-variant aspect-[4/5] mb-6">
+                                        <img className="w-full h-full object-cover grayscale-[0.2] group-hover:scale-105 transition-transform duration-1000" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDgt6kaz_a9MM9hY0xaAHKGr8soYRqM_Rkghce88MYqAGyCRcADRtPUzTy0wnvAbzPxaeO2PkoT7L-5q_WxxKA6C3Kn31_FpU4Yamdk16rjvNL6hvlEPXMRQZiGLsH3rIrQ_-MROYlk1DEYMATsRSYJ62AWtzQBr90y5DUMJ-CtgoI5d-1qxeQt6kOgaYKUI9WbWSPchZg2xTaKcnPVjrNZJbm4EUzqo3o_Nomac-aMjfpTsnksbBdoKNF865e53WtgXiWTDyGTAj0" alt="Ring" />
+                                        <div className="absolute bottom-6 right-6 translate-y-full opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-500">
+                                            <button className="bg-primary text-on-primary px-8 py-4 text-[10px] uppercase tracking-widest font-bold">Quick View</button>
+                                        </div>
+                                    </div>
+                                    <div className="flex justify-between items-start">
+                                        <div>
+                                            <h2 className="text-xl font-medium mb-1 group-hover:text-secondary transition-colors">Solstice Halo Ring</h2>
+                                            <p className="text-[11px] uppercase tracking-widest text-on-surface-variant font-medium">18k Yellow Gold • 1.2ct Diamond</p>
+                                        </div>
+                                        <span className="text-sm font-medium">$12,400</span>
+                                    </div>
+                                </div>
+
+                                {/* Product Card 2 */}
+                                <div className="group lg:mt-24 cursor-pointer">
+                                    <div className="relative overflow-hidden bg-surface-variant aspect-[4/5] mb-6">
+                                        <img className="w-full h-full object-cover grayscale-[0.2] group-hover:scale-105 transition-transform duration-1000" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAXFXs5sQjj9loXMN9MTirbiv791xjbU96-eQleZK09vSFGTRviD2cLFo4Kexb10ccL9QPP7S-aTKO5wB_t7hPaIdP0FNiBGea9gwTrqEIaw3BN8p82T7ODY9SMPlvrA-AZCgglv0lDLqRdBoCFkWf9-QFgaQE758l8FBlzf5ld9OzSNxQfymUq4M2h0Te8xqlVzwhMrB4tgx1QY_XtDK2huidUo6-r8i6fzVhUQB0VNMLsbbGk63a9RqU8lGLNj2wf2c-uSCVYv04" alt="Cuff" />
+                                    </div>
+                                    <div className="flex justify-between items-start">
+                                        <div>
+                                            <h2 className="text-xl font-medium mb-1 group-hover:text-secondary transition-colors">Linear Axis Cuff</h2>
+                                            <p className="text-[11px] uppercase tracking-widest text-on-surface-variant font-medium">Polished Platinum • Obsidian Inlay</p>
+                                        </div>
+                                        <span className="text-sm font-medium">$8,900</span>
+                                    </div>
+                                </div>
+                                {/* ... more cards ... */}
+                            </div>
+                        </section>
+                    </div>
+                </main>
+            );
+        };
+
+        const ProductPage = () => {
+            const navigate = useNavigate();
+            return (
+                <main className="pt-24 min-h-screen">
+                    <section className="max-w-[1440px] mx-auto px-8 py-12 lg:py-20 flex flex-col lg:flex-row gap-16 lg:gap-24">
+                        <div className="lg:w-3/5 grid grid-cols-2 gap-4 h-fit">
+                            <div className="col-span-2 aspect-[4/5] bg-surface-variant overflow-hidden">
+                                <img className="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-700" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCL1yrlb6odNJW_V58gucaC6zdpxWr6j366XzsTC8a-C1OgzhAul2hgoCqHM-LoaDNAUAYBY3fYAz5kVItHzXW0goRtsVi0fAU6yyYAlX1iQUw_WtRhCxr3HhstiLlChN4oKLccZOqlw8xzjtefScqVAvOmUaAzOcSnW0p2teU9LtWxiHHOtAJfLvxE5uNRzp2apk5EQMnj60cTnpG5n9RJSwtd5qDgJtgKDjg7SqX-Ko1Cp5x_EXjaK51VkwL4Wx5Y5K9npiohlf0" alt="Main View" />
+                            </div>
+                            <div className="aspect-square bg-surface-variant overflow-hidden">
+                                <img className="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuA5osvVhjJG_jlXAeY9oEKB_OkvntZJ8UAL5p7hc9HMIsGGavL302WSXApDtWNtRrQepziKnitaf5s-12thR_RC6nVS3j4dnH4O5eyG7a-9tL1dHfnSk6pck1xqQOURab5CMEKmmo_T12Pb0vhJCWAYx-Wftu3vdpv5eIcsH15zVAUJv_rh8hX7IXChCCljtgQdBtiebwoxi99-EawR5xr6wFcLw4thwdJMX2xHFpjLpsencOV7utYobW8N0Xihhl_A0LLShXMsR4g" alt="Side View" />
+                            </div>
+                            <div className="aspect-square bg-surface-variant overflow-hidden mt-8">
+                                <img className="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBSIFK4h3RGOUt0QbPtctH7n3FCvJK3ywImp7MUnspdAFdOCQpOIA8i1gExMabVSf0H3Z1yHmK7btl6q3f3bhx7fEOIIHjOMxWMJ_Up5LewfXYU1dDuovw_oIqcZJHrCXbUaJVN1Vj2IXgIcwH5hnhtig321TXzt2-8RQwRdfXWfu-aEPQGUzN2Ak5RbQnUlq9N0zl3z6DivSDZaNHbq3dfg-9Twzs0yPZMPdv9zG127edUZvO-_ktD_I3shNQTm_Bz94em-Ub-9Fw" alt="Lifestyle View" />
+                            </div>
+                        </div>
+
+                        <div className="lg:w-2/5 flex flex-col sticky top-32 h-fit">
+                            <div className="mb-12">
+                                <span className="text-secondary font-label text-[10px] tracking-[0.2em] uppercase block mb-4">The Solitaire Series</span>
+                                <h1 className="serif-heading text-4xl md:text-5xl lg:text-6xl text-primary leading-tight -tracking-[0.02em] mb-6">Celestial 2ct Brilliant</h1>
+                                <p className="text-on-surface-variant font-body text-lg leading-relaxed max-w-md">
+                                    A masterwork of light and precision. This singular 2.02 carat diamond is held by four delicate platinum claws.
+                                </p>
+                            </div>
+                            <div className="space-y-12 mb-16">
+                                <div className="flex justify-between items-end border-b border-outline-variant/30 pb-4">
+                                    <span className="font-label text-xs uppercase tracking-widest text-on-surface-variant">Investment</span>
+                                    <span className="serif-heading text-3xl text-primary">$32,400</span>
+                                </div>
+                                <div className="grid grid-cols-2 gap-y-10 gap-x-8">
+                                    <div className="flex flex-col gap-2">
+                                        <span className="font-label text-[10px] uppercase tracking-widest text-on-surface-variant/60">Cut</span>
+                                        <span className="serif-heading text-lg">Excellent</span>
+                                    </div>
+                                    <div className="flex flex-col gap-2">
+                                        <span className="font-label text-[10px] uppercase tracking-widest text-on-surface-variant/60">Carat</span>
+                                        <span className="serif-heading text-lg">2.02 ct</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div className="flex flex-col gap-4">
+                                <button onClick={() => navigate('/checkout')} className="bg-primary text-on-primary py-6 px-12 font-label text-xs uppercase tracking-widest hover:bg-primary-container transition-all duration-500 flex justify-between items-center group">
+                                    Add to Bag
+                                    <span className="material-symbols-outlined group-hover:translate-x-1 transition-transform">arrow_right_alt</span>
+                                </button>
+                                <button className="border border-outline-variant py-6 px-12 font-label text-xs uppercase tracking-widest hover:bg-surface-container-low transition-all duration-500">
+                                    Inquire for Bespoke
+                                </button>
+                            </div>
+                        </div>
+                    </section>
+                </main>
+            );
+        };
+
+        const CheckoutPage = () => {
+            return (
+                <main className="pt-32 pb-24 px-8 max-w-[1440px] mx-auto min-h-screen">
+                    <header className="mb-16 text-center">
+                        <h1 className="serif-heading text-4xl mb-12 tracking-tight">Checkout</h1>
+                        <div className="flex items-center justify-center max-w-2xl mx-auto px-4">
+                            <div className="flex flex-col items-center flex-1">
+                                <div className="w-10 h-10 flex items-center justify-center border border-secondary text-secondary mb-3">
+                                    <span className="text-sm font-bold">01</span>
+                                </div>
+                                <span className="text-[10px] uppercase tracking-widest font-semibold text-secondary">Information</span>
+                            </div>
+                            <div className="h-[1px] bg-outline-variant/30 flex-grow -mt-8"></div>
+                            <div className="flex flex-col items-center flex-1">
+                                <div className="w-10 h-10 flex items-center justify-center border border-outline-variant text-outline-variant mb-3">
+                                    <span className="text-sm font-bold">02</span>
+                                </div>
+                                <span className="text-[10px] uppercase tracking-widest font-semibold text-outline-variant">Shipping</span>
+                            </div>
+                        </div>
+                    </header>
+                    <div className="grid grid-cols-1 lg:grid-cols-12 gap-16">
+                        <div className="lg:col-span-7 space-y-16">
+                            <section>
+                                <h2 className="text-xs uppercase tracking-[0.2em] mb-8 text-on-surface-variant font-bold">Your Selection</h2>
+                                <table className="w-full border-collapse">
+                                    <tbody className="divide-y divide-outline-variant/5">
+                                        <tr>
+                                            <td className="py-8">
+                                                <div className="flex items-center gap-6">
+                                                    <div className="w-24 h-32 bg-surface-variant flex-shrink-0">
+                                                        <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuDfMvcYlzl-UMuHGd6nCjmd_a_NBPr0WPmgPmcPDG1zJqA3fRIChguYV-SZ7YLOqjHg-VTm6mkD03p0dEr9ZIyP48zefVqdlB5E9vF1kDVkQmidY2CfagGwnPS0wIfrhEo4JF0V6M76RDKPH2w1SH86Wc988GcoZN4R4aVJi0q1EiiTGkdltHylUUgJJjOcX14nNjP0LCZK1X6XF1DJZ-4AZ0vMEnQBUezzFDUbWXQJnp4rkYMGQN56JhMWulxKUyFT3QvwNOpsOm8" className="w-full h-full object-cover grayscale" alt="Ring" />
+                                                    </div>
+                                                    <div>
+                                                        <h3 className="serif-heading text-lg mb-1">Ethereal Solitaire Ring</h3>
+                                                        <p className="text-[10px] text-on-surface-variant uppercase tracking-widest">$18,500.00</p>
+                                                    </div>
+                                                </div>
+                                            </td>
+                                            <td className="py-8 text-right font-bold">$18,500.00</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </section>
+                            <section className="bg-surface-container-low p-12">
+                                <h2 className="text-xs uppercase tracking-[0.2em] mb-10 text-on-surface-variant font-bold">Shipping Address</h2>
+                                <div className="space-y-10">
+                                    <div className="grid grid-cols-2 gap-10">
+                                        <input className="bg-transparent border-0 border-b border-outline-variant focus:border-secondary focus:ring-0 px-0 py-2 text-sm" placeholder="First Name" />
+                                        <input className="bg-transparent border-0 border-b border-outline-variant focus:border-secondary focus:ring-0 px-0 py-2 text-sm" placeholder="Last Name" />
+                                    </div>
+                                    <input className="w-full bg-transparent border-0 border-b border-outline-variant focus:border-secondary focus:ring-0 px-0 py-2 text-sm" placeholder="Street Address" />
+                                </div>
+                            </section>
+                        </div>
+                        <aside className="lg:col-span-5">
+                            <div className="sticky top-32 bg-primary-container text-on-primary p-12">
+                                <h2 className="text-xs uppercase tracking-[0.2em] mb-10 text-on-primary-container font-bold">Order Summary</h2>
+                                <div className="space-y-6 mb-12">
+                                    <div className="flex justify-between items-center">
+                                        <span className="text-xs uppercase tracking-widest opacity-60">Subtotal</span>
+                                        <span>$18,500.00</span>
+                                    </div>
+                                    <div className="flex justify-between items-center text-xl font-bold border-t border-white/10 pt-8">
+                                        <span>Total</span>
+                                        <span>$18,500.00</span>
+                                    </div>
+                                </div>
+                                <button className="w-full bg-secondary text-on-primary py-5 font-bold uppercase tracking-[0.2em] hover:bg-secondary-fixed-dim transition-all duration-500">
+                                    Proceed to Shipping
+                                </button>
+                            </div>
+                        </aside>
+                    </div>
+                </main>
+            );
+        };
+
+        // --- Core App Layout ---
+
+        const App = () => {
+            const { pathname } = useLocation();
+
+            // Scroll to top on every route change
+            useEffect(() => {
+                window.scrollTo(0, 0);
+            }, [pathname]);
+
+            return (
+                <div className="flex flex-col min-h-screen">
+                    <Navigation />
+                    <Routes>
+                        <Route path="/" element={<HomePage />} />
+                        <Route path="/collections" element={<CollectionsPage />} />
+                        <Route path="/product" element={<ProductPage />} />
+                        <Route path="/checkout" element={<CheckoutPage />} />
+                    </Routes>
+                    <Footer />
+                </div>
+            );
+        };
+
+        const Root = () => (
+            <MemoryRouter>
+                <App />
+            </MemoryRouter>
+        );
+
+        const container = document.getElementById('root');
+        const root = createRoot(container);
+        root.render(<Root />);
+    </script>
+</body>
+</html>

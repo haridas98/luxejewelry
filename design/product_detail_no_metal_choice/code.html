@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script type="text/javascript" nonce="96ee890d73be47a28ca9c1d8f63" src="//injections.adguard.org?ts=1774675580435&amp;type=content-script&amp;dmn=contribution.usercontent.google.com&amp;url=https%3A%2F%2Fcontribution.usercontent.google.com%2Fdownload%3Fc%3DCgthaWRhX2NvZGVmeBJ7Eh1hcHBfY29tcGFuaW9uX2dlbmVyYXRlZF9maWxlcxpaCiVodG1sX2JhOGM1MTEwMDlkODRlOGZiYmNjY2ZlMWViMjI0NTI2EgsSBxC-r4XAvAYYAZIBIwoKcHJvamVjdF9pZBIVQhM0NjY3NTExMTkxNzcyNzYxNDM3%26filename%3D%26opi%3D89354086&amp;app=chrome.exe&amp;css=3&amp;js=1&amp;rel=1&amp;rji=1&amp;sbe=1"></script><script type="text/javascript" nonce="96ee890d73be47a28ca9c1d8f63" src="//injections.adguard.org?ts=1774675580435&amp;name=AdGuard%20Assistant&amp;name=AdGuard%20Extra&amp;type=user-script"></script><link href="https://fonts.googleapis.com/css2?family=Noto+Serif:wght@400;700&amp;family=Manrope:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "secondary-container": "#fed488",
+              "on-tertiary": "#ffffff",
+              "on-error": "#ffffff",
+              "on-secondary-fixed": "#261900",
+              "on-primary-fixed-variant": "#474746",
+              "on-surface-variant": "#444748",
+              "tertiary-fixed": "#fadfb2",
+              "secondary": "#775a19",
+              "outline-variant": "#c4c7c7",
+              "primary-fixed": "#e5e2e1",
+              "secondary-fixed-dim": "#e9c176",
+              "surface-variant": "#e3e2e0",
+              "inverse-surface": "#2f312f",
+              "on-background": "#1a1c1a",
+              "surface-tint": "#5f5e5e",
+              "surface": "#faf9f6",
+              "surface-container-lowest": "#ffffff",
+              "on-tertiary-fixed-variant": "#554423",
+              "tertiary-fixed-dim": "#dcc398",
+              "surface-container-highest": "#e3e2e0",
+              "tertiary": "#000000",
+              "secondary-fixed": "#ffdea5",
+              "primary-container": "#1c1b1b",
+              "on-secondary-container": "#785a1a",
+              "surface-container": "#efeeeb",
+              "background": "#faf9f6",
+              "error": "#ba1a1a",
+              "error-container": "#ffdad6",
+              "on-error-container": "#93000a",
+              "primary-fixed-dim": "#c8c6c5",
+              "surface-bright": "#faf9f6",
+              "primary": "#000000",
+              "on-tertiary-fixed": "#261900",
+              "on-primary-container": "#858383",
+              "on-tertiary-container": "#96815a",
+              "surface-dim": "#dbdad7",
+              "on-surface": "#1a1c1a",
+              "on-primary-fixed": "#1c1b1b",
+              "on-primary": "#ffffff",
+              "surface-container-high": "#e9e8e5",
+              "inverse-on-surface": "#f2f1ee",
+              "on-secondary": "#ffffff",
+              "surface-container-low": "#f4f3f1",
+              "tertiary-container": "#261900",
+              "outline": "#747878",
+              "inverse-primary": "#c8c6c5",
+              "on-secondary-fixed-variant": "#5d4201"
+            },
+            fontFamily: {
+              "headline": ["Noto Serif"],
+              "body": ["Manrope"],
+              "label": ["Manrope"]
+            },
+            borderRadius: {"DEFAULT": "0px", "lg": "0px", "xl": "0px", "full": "9999px"},
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 300, 'GRAD' 0, 'opsz' 24;
+        }
+        .hide-scrollbar::-webkit-scrollbar { display: none; }
+        .hide-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+    </style>
+</head>
+<body class="bg-surface text-on-surface font-body selection:bg-secondary-fixed-dim selection:text-on-secondary-fixed">
+<!-- Top Navigation Bar -->
+<nav class="fixed top-0 w-full z-50 bg-[#faf9f6]/80 dark:bg-[#1a1a1a]/80 backdrop-blur-md">
+<div class="flex justify-between items-center w-full px-8 py-6 max-w-[1440px] mx-auto">
+<div class="font-noto-serif text-2xl tracking-tighter font-bold text-[#1a1a1a] dark:text-[#faf9f6]">ATELIER</div>
+<div class="hidden md:flex items-center space-x-12">
+<a class="font-noto-serif uppercase tracking-[0.1em] text-xs font-medium text-[#1a1a1a] dark:text-[#faf9f6] opacity-80 hover:opacity-100 hover:text-[#775a19] transition-all duration-500" href="#">Collections</a>
+<a class="font-noto-serif uppercase tracking-[0.1em] text-xs font-medium text-[#775a19] dark:text-[#e9c176] border-b border-[#775a19] pb-1" href="#">High Jewelry</a>
+<a class="font-noto-serif uppercase tracking-[0.1em] text-xs font-medium text-[#1a1a1a] dark:text-[#faf9f6] opacity-80 hover:opacity-100 hover:text-[#775a19] transition-all duration-500" href="#">Bespoke</a>
+<a class="font-noto-serif uppercase tracking-[0.1em] text-xs font-medium text-[#1a1a1a] dark:text-[#faf9f6] opacity-80 hover:opacity-100 hover:text-[#775a19] transition-all duration-500" href="#">Heritage</a>
+</div>
+<div class="flex items-center space-x-6">
+<button class="material-symbols-outlined text-[#1a1a1a] dark:text-[#faf9f6] text-2xl">shopping_bag</button>
+<button class="md:hidden material-symbols-outlined text-[#1a1a1a] dark:text-[#faf9f6] text-2xl">menu</button>
+</div>
+</div>
+</nav>
+<main class="pt-24 min-h-screen">
+<!-- Product Editorial Section -->
+<section class="max-w-[1440px] mx-auto px-8 py-12 lg:py-20 flex flex-col lg:flex-row gap-16 lg:gap-24">
+<!-- Gallery: Asymmetrical Grid -->
+<div class="lg:w-3/5 grid grid-cols-2 gap-4 h-fit">
+<div class="col-span-2 aspect-[4/5] bg-surface-variant overflow-hidden">
+<img class="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-700" data-alt="Ultra close-up of a 2 carat round brilliant diamond ring on a platinum band, reflecting soft natural light on a neutral silk fabric" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCL1yrlb6odNJW_V58gucaC6zdpxWr6j366XzsTC8a-C1OgzhAul2hgoCqHM-LoaDNAUAYBY3fYAz5kVItHzXW0goRtsVi0fAU6yyYAlX1iQUw_WtRhCxr3HhstiLlChN4oKLccZOqlw8xzjtefScqVAvOmUaAzOcSnW0p2teU9LtWxiHHOtAJfLvxE5uNRzp2apk5EQMnj60cTnpG5n9RJSwtd5qDgJtgKDjg7SqX-Ko1Cp5x_EXjaK51VkwL4Wx5Y5K9npiohlf0"/>
+</div>
+<div class="aspect-square bg-surface-variant overflow-hidden">
+<img class="w-full h-full object-cover" data-alt="Side profile view of a diamond ring showcasing the intricate basket setting and the clarity of the 2ct stone against a blurred minimalist background" src="https://lh3.googleusercontent.com/aida-public/AB6AXuA5osvVhjJG_jlXAeY9oEKB_OkvntZJ8UAL5p7hc9HMIsGGavL302WSXApDtWNtRrQepziKnitaf5s-12thR_RC6nVS3j4dnH4O5eyG7a-9tL1dHfnSk6pck1xqQOURab5CMEKmmo_T12Pb0vhJCWAYx-Wftu3vdpv5eIcsH15zVAUJv_rh8hX7IXChCCljtgQdBtiebwoxi99-EawR5xr6wFcLw4thwdJMX2xHFpjLpsencOV7utYobW8N0Xihhl_A0LLShXMsR4g"/>
+</div>
+<div class="aspect-square bg-surface-variant overflow-hidden mt-8">
+<img class="w-full h-full object-cover" data-alt="Hand of a model wearing a large diamond ring, soft editorial lighting, elegant aesthetic with high-end fashion vibe" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBSIFK4h3RGOUt0QbPtctH7n3FCvJK3ywImp7MUnspdAFdOCQpOIA8i1gExMabVSf0H3Z1yHmK7btl6q3f3bhx7fEOIIHjOMxWMJ_Up5LewfXYU1dDuovw_oIqcZJHrCXbUaJVN1Vj2IXgIcwH5hnhtig321TXzt2-8RQwRdfXWfu-aEPQGUzN2Ak5RbQnUlq9N0zl3z6DivSDZaNHbq3dfg-9Twzs0yPZMPdv9zG127edUZvO-_ktD_I3shNQTm_Bz94em-Ub-9Fw"/>
+</div>
+<div class="col-span-2 aspect-[16/9] bg-surface-container-low overflow-hidden mt-4">
+<img class="w-full h-full object-cover opacity-80" data-alt="Artistic shot of loose diamonds and jewelry tools on a velvet master bench, emphasizing craftsmanship and atelier heritage" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDgyb5ok4acRb73WppqMxF_mPlhcYvQoRKq3UkbpWIigWDKIehCiepDp3t7ObKbhgfLJxJTlDHp7BEgZV9KyTEx3S0FqNE2upGKFJ4ZHcruOlz0s02YboE13pJW6yP0ZxTRqy7XNV7J8begVXS41PfhNj1CP8jgltni-nVe6tLzb7hKch6PvX1XlcsTVC8uV75-yZcwljoaVW5uqA3UXxRjg4kqkg2ymM110d0DiZfMLvlnBvH6L02QPrIEzRxflQThKhIfy0UiOqg"/>
+</div>
+</div>
+<!-- Product Details: Information Canvas -->
+<div class="lg:w-2/5 flex flex-col sticky top-32 h-fit">
+<div class="mb-12">
+<span class="text-secondary font-label text-[10px] tracking-[0.2em] uppercase block mb-4">The Solitaire Series</span>
+<h1 class="font-headline text-4xl md:text-5xl lg:text-6xl text-primary leading-tight -tracking-[0.02em] mb-6">Celestial 2ct Brilliant</h1>
+<p class="text-on-surface-variant font-body text-lg leading-relaxed max-w-md">
+                        A masterwork of light and precision. This singular 2.02 carat diamond is held by four delicate platinum claws, designed to disappear and let the stone breathe.
+                    </p>
+</div>
+<!-- Price and Specs -->
+<div class="space-y-12 mb-16">
+<div class="flex justify-between items-end border-b border-outline-variant/30 pb-4">
+<span class="font-label text-xs uppercase tracking-widest text-on-surface-variant">Investment</span>
+<span class="font-headline text-3xl text-primary">$32,400</span>
+</div>
+<div class="grid grid-cols-2 gap-y-10 gap-x-8">
+<div class="flex flex-col gap-2">
+<span class="font-label text-[10px] uppercase tracking-widest text-on-surface-variant/60">Cut</span>
+<span class="font-headline text-lg">Excellent (Round)</span>
+</div>
+<div class="flex flex-col gap-2">
+<span class="font-label text-[10px] uppercase tracking-widest text-on-surface-variant/60">Clarity</span>
+<span class="font-headline text-lg">VVS1</span>
+</div>
+<div class="flex flex-col gap-2">
+<span class="font-label text-[10px] uppercase tracking-widest text-on-surface-variant/60">Carat</span>
+<span class="font-headline text-lg">2.02 ct (D Color)</span>
+</div>
+</div>
+</div>
+<!-- Action Blocks -->
+<div class="flex flex-col gap-4">
+<button class="bg-primary text-on-primary py-6 px-12 font-label text-xs uppercase tracking-widest hover:bg-primary-container transition-all duration-500 flex justify-between items-center group">
+                        Add to Bag
+                        <span class="material-symbols-outlined group-hover:translate-x-1 transition-transform">arrow_right_alt</span>
+</button>
+<button class="border border-outline-variant py-6 px-12 font-label text-xs uppercase tracking-widest hover:bg-surface-container-low transition-all duration-500">
+                        Inquire for Bespoke
+                    </button>
+</div>
+<div class="mt-12 p-8 bg-surface-container-low">
+<div class="flex items-start gap-4">
+<span class="material-symbols-outlined text-secondary">verified</span>
+<div>
+<p class="font-label text-[10px] uppercase tracking-widest mb-1">GIA Certified &amp; Traceable</p>
+<p class="text-xs text-on-surface-variant">Each stone is hand-selected and comes with full digital provenance and laser inscription.</p>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- The Atelier Carousel (Asymmetrical Recommendation Section) -->
+<section class="bg-surface-container py-32 mt-20">
+<div class="max-w-[1440px] mx-auto px-8">
+<div class="flex flex-col md:flex-row justify-between items-end mb-20">
+<div class="max-w-md">
+<span class="text-secondary font-label text-[10px] tracking-[0.2em] uppercase block mb-4">Complete the look</span>
+<h2 class="font-headline text-4xl md:text-5xl leading-tight">Curated Accompaniments</h2>
+</div>
+<a class="text-secondary font-label text-xs uppercase tracking-widest border-b border-secondary pb-1 mt-8 md:mt-0" href="#">View All Collections</a>
+</div>
+<div class="flex overflow-x-auto gap-8 hide-scrollbar pb-12">
+<!-- Item 1 -->
+<div class="min-w-[320px] md:min-w-[450px] group">
+<div class="aspect-[3/4] bg-surface-variant mb-6 overflow-hidden relative">
+<img class="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-105" data-alt="Elegant diamond stud earrings in a minimalist platinum setting, high contrast studio lighting with soft shadows" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBnyztzdGHCaWv2iTHxwGvBOh2lQu8pFf50TO6XXVEQqgMPjfU_btA5WARf1OPKvKqmwDYzbaIapuXhWQC2qVK-rkKXxWuucuTNwO1l5weHv4ujtMkbjlaLCf2V2tWXpGpDlm65xATIdWUhJUi7SHrrnJZH3mSgwhO1BGLEueX6t6JA43zytuisKi2l4skSGK_WVdnmaqCNBl6jJ0i-NTitF5yDy4GXXPVKxlwPr0_rGZy4OLKIrbTGRTGO38aoG3BENCRH45kGOJw"/>
+<div class="absolute bottom-6 left-6 right-6 p-6 bg-surface-container-lowest transition-transform duration-500 translate-y-4 opacity-0 group-hover:translate-y-0 group-hover:opacity-100">
+<p class="font-headline text-lg mb-1">Etoile Studs</p>
+<p class="font-label text-xs text-on-surface-variant">$8,200</p>
+</div>
+</div>
+</div>
+<!-- Item 2 (Bespoke Overlap Pattern) -->
+<div class="min-w-[320px] md:min-w-[450px] mt-12 md:mt-24 group">
+<div class="aspect-[3/4] bg-surface-variant mb-6 overflow-hidden relative">
+<img class="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-105" data-alt="A delicate gold necklace with a single diamond pendant resting on a textured light grey surface" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDCrZaHHv5lWarGHWDIqneFJMrN79D5Z6kiSa_0ljteFnF1EiKA2KBrVWfKQhGm8Qhz-KrpKQTCATXwMXuazhq3xw_QfFLxMJUzFFKwNGrj73ETdMu3TTTnosgpVjCJzg4qe6G6JW_tzNAHfxWlS6jjfgtz977lpGSW8K76dZhYQXQq-0rF5MvkaVKFKkqk59McZuxm-Ja8FIy1WHir1sioqAsy5UDkZB_EqPEMLZmVGa87OyKqe2KcESX_ab-Z_ps56PSYk8MJRoE"/>
+<div class="absolute bottom-6 left-6 right-6 p-6 bg-surface-container-lowest transition-transform duration-500 translate-y-4 opacity-0 group-hover:translate-y-0 group-hover:opacity-100">
+<p class="font-headline text-lg mb-1">Nexus Pendant</p>
+<p class="font-label text-xs text-on-surface-variant">$5,500</p>
+</div>
+</div>
+</div>
+<!-- Item 3 -->
+<div class="min-w-[320px] md:min-w-[450px] group">
+<div class="aspect-[3/4] bg-surface-variant mb-6 overflow-hidden relative">
+<img class="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-105" data-alt="Modern geometric diamond bracelet in white gold against a high-end textured architectural background" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBieDomT59S_fbw9ukoEdcIYOI0P90kRZzYNgCYCFS6RB6adNgZs9pnZp6hd7XdxN5QA4EFkptDAJXy2ipQph_qc7C6iBH4FS7H2M6eddZwHg1hs9hoZN1RJtRL0ULkhrAftOQDVLt_WBkaijMKCqWbRHSoVI4TvLAEU3kJKb6Pjp2EKFDdVJl2DJDMwRQSWzlSADiLGQ7ZsD7BbmoblaQRy6IlO4v3VHy4OTaOWhQcBEvluNT0ydg7P4z9XPE_VoPv1RcUTJQwFpE"/>
+<div class="absolute bottom-6 left-6 right-6 p-6 bg-surface-container-lowest transition-transform duration-500 translate-y-4 opacity-0 group-hover:translate-y-0 group-hover:opacity-100">
+<p class="font-headline text-lg mb-1">Arch Bracelet</p>
+<p class="font-label text-xs text-on-surface-variant">$12,000</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+</main>
+<!-- Footer -->
+<footer class="bg-[#1c1b1b] dark:bg-[#000000] text-[#faf9f6] w-full pt-20 pb-10">
+<div class="grid grid-cols-1 md:grid-cols-4 gap-12 px-12 w-full mx-auto max-w-[1440px]">
+<div>
+<span class="font-noto-serif text-xl text-[#faf9f6] mb-4 block">ATELIER</span>
+<p class="font-manrope text-sm tracking-wide text-[#faf9f6]/60 leading-relaxed max-w-xs">
+                    Curating high jewelry for the modern connoisseur. Every piece is born from a dialogue between raw nature and refined artistry.
+                </p>
+</div>
+<div class="flex flex-col gap-4">
+<span class="font-label text-[10px] uppercase tracking-[0.2em] mb-4 opacity-40">Explore</span>
+<a class="font-manrope text-sm tracking-wide text-[#faf9f6]/60 hover:text-[#faf9f6] transition-colors duration-300" href="#">Our Story</a>
+<a class="font-manrope text-sm tracking-wide text-[#faf9f6]/60 hover:text-[#faf9f6] transition-colors duration-300" href="#">Craftsmanship</a>
+<a class="font-manrope text-sm tracking-wide text-[#faf9f6]/60 hover:text-[#faf9f6] transition-colors duration-300" href="#">Sustainability</a>
+</div>
+<div class="flex flex-col gap-4">
+<span class="font-label text-[10px] uppercase tracking-[0.2em] mb-4 opacity-40">Service</span>
+<a class="font-manrope text-sm tracking-wide text-[#faf9f6]/60 hover:text-[#faf9f6] transition-colors duration-300" href="#">Contact</a>
+<a class="font-manrope text-sm tracking-wide text-[#faf9f6]/60 hover:text-[#faf9f6] transition-colors duration-300" href="#">Shipping</a>
+<a class="font-manrope text-sm tracking-wide text-[#faf9f6]/60 hover:text-[#faf9f6] transition-colors duration-300" href="#">Private Viewing</a>
+</div>
+<div>
+<span class="font-label text-[10px] uppercase tracking-[0.2em] mb-4 opacity-40">Subscribe</span>
+<div class="relative">
+<input class="bg-transparent border-b border-[#faf9f6]/20 w-full py-4 font-label text-[10px] focus:outline-none focus:border-[#e9c176] transition-colors" placeholder="YOUR EMAIL" type="email"/>
+<button class="absolute right-0 top-1/2 -translate-y-1/2 material-symbols-outlined text-[#e9c176]">arrow_forward</button>
+</div>
+</div>
+</div>
+<div class="px-12 mt-24 flex flex-col md:flex-row justify-between items-center opacity-40 border-t border-[#faf9f6]/5 pt-8">
+<span class="font-manrope text-[10px] tracking-widest uppercase">© 2024 THE DIGITAL ATELIER. ALL RIGHTS RESERVED.</span>
+<div class="flex gap-8 mt-4 md:mt-0">
+<span class="material-symbols-outlined text-sm">public</span>
+<span class="material-symbols-outlined text-sm">potted_plant</span>
+<span class="material-symbols-outlined text-sm">diamond</span>
+</div>
+</div>
+</footer>
+</body></html>
