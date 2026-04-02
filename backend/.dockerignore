@@ -1,0 +1,15 @@
+# Backend .dockerignore
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.Python
+venv/
+env/
+*.sqlite3
+media/
+staticfiles/
+.git
+.gitignore
+.env
+*.log

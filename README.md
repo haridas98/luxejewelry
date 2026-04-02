@@ -60,6 +60,30 @@
 
 ## 🚀 Быстрый старт
 
+### Вариант 1: Docker (рекомендуется)
+
+```bash
+# Production режим
+docker-compose --profile production up -d --build
+
+# Development режим
+docker-compose --profile development up -d --build
+```
+
+**Доступ:**
+- Frontend: http://localhost:3000
+- Backend API: http://localhost:8000/api/
+- Admin: http://localhost:3000/admin/
+
+**Создание суперпользователя:**
+```bash
+docker-compose exec backend python manage.py createsuperuser
+```
+
+📖 **Подробная инструкция:** см. [DOCKER.md](DOCKER.md)
+
+### Вариант 2: Локальная разработка
+
 ### 1. Backend (Django)
 
 ```bash
