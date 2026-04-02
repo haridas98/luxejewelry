@@ -82,6 +82,10 @@ log_info "Начинаю установку..."
 log_info "Обновляю систему..."
 apt update && apt upgrade -y
 
+# Установка Git
+log_info "Устанавливаю Git..."
+apt install -y git
+
 # Установка Docker
 log_info "Устанавливаю Docker..."
 if ! command -v docker &> /dev/null; then
