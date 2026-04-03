@@ -13,28 +13,28 @@ const ProductPage = () => {
     const [isAdmin, setIsAdmin] = useState(false);
     const [isInWishlist, setIsInWishlist] = useState(false);
 
+    const fetchWishlist = async (token, productId) => {
+        try {
+            const response = await axios.get('http://localhost:8000/api/wishlist/', {
+                headers: { 'Authorization': `Bearer ${token}` }
+            });
+            setIsInWishlist(response.data.some(p => p.id === productId));
+        } catch (error) {
+            console.error('Error fetching wishlist:', error);
+        }
+    };
+
     useEffect(() => {
         const token = localStorage.getItem('token');
         if (token) {
             // Check if admin
             const payload = JSON.parse(atob(token.split('.')[1]));
             setIsAdmin(payload.is_staff || false);
-            
-            // Check wishlist
-            fetchWishlist(token);
-        }
-    }, []);
 
-    const fetchWishlist = async (token) => {
-        try {
-            const response = await axios.get('http://localhost:8000/api/wishlist/', {
-                headers: { 'Authorization': `Bearer ${token}` }
-            });
-            setIsInWishlist(response.data.some(p => p.id === parseInt(id)));
-        } catch (error) {
-            console.error('Error fetching wishlist:', error);
+            // Check wishlist
+            fetchWishlist(token, parseInt(id));
         }
-    };
+    }, [id]);
 
     const toggleWishlist = async () => {
         const token = localStorage.getItem('token');

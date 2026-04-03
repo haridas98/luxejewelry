@@ -3,14 +3,14 @@ FROM node:18-alpine
 
 WORKDIR /app
 
-# Copy package files
-COPY package*.json ./
+# Copy package files (из-за того что context = корень проекта)
+COPY frontend/package*.json ./
 
 # Install dependencies
 RUN npm install
 
-# Copy project
-COPY . .
+# Copy project (из-за того что context = корень проекта)
+COPY frontend/ .
 
 # Expose port
 EXPOSE 3000

@@ -55,7 +55,7 @@ const HomePage = () => {
     }, 5000);
 
     return () => clearInterval(interval);
-  }, []);
+  }, [heroSlides.length]);
 
   const getCategoryImage = (categoryName) => {
     const images = {

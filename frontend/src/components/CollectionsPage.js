@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useMemo } from 'react';
-import { useNavigate, Link, useParams } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import axios from 'axios';
 import Navigation from './Navigation';
 import Footer from './Footer';
@@ -12,34 +12,25 @@ const CollectionsPage = () => {
     const [categories, setCategories] = useState([]);
     const [currentCategory, setCurrentCategory] = useState(null);
     const [loading, setLoading] = useState(true);
-    const [isAuthenticated, setIsAuthenticated] = useState(false);
     const [allStones, setAllStones] = useState([]);
     const [mobileFiltersOpen, setMobileFiltersOpen] = useState(false);
     const [searchQuery, setSearchQuery] = useState('');
-    
+
     // Filters
     const [selectedSubcategory, setSelectedSubcategory] = useState('');
     const [selectedStoneId, setSelectedStoneId] = useState('');
     const [selectedSize, setSelectedSize] = useState('');
     const [sortBy, setSortBy] = useState('newest');
     const [priceRange, setPriceRange] = useState('');
-    
+
     // Wishlist
     const [wishlist, setWishlist] = useState([]);
-    
-    // Cart
-    const [cartCount, setCartCount] = useState(0);
 
     useEffect(() => {
         const token = localStorage.getItem('token');
-        setIsAuthenticated(!!token);
         if (token) {
             fetchWishlist(token);
         }
-        
-        // Load cart count
-        const cart = JSON.parse(localStorage.getItem('cart') || '[]');
-        setCartCount(cart.reduce((sum, item) => sum + item.quantity, 0));
     }, []);
 
     useEffect(() => {
@@ -147,9 +138,8 @@ const CollectionsPage = () => {
                 quantity: 1,
             });
         }
-        
+
         localStorage.setItem('cart', JSON.stringify(cart));
-        setCartCount(cart.reduce((sum, item) => sum + item.quantity, 0));
     };
 
     const handleSearch = (e) => {

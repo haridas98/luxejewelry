@@ -55,9 +55,9 @@ const Footer = () => {
           © 2024 LUXEJEWELS. ВСЕ ПРАВА ЗАЩИЩЕНЫ.
         </span>
         <div className="flex gap-8">
-          <a href="#" className="text-surface/40 hover:text-surface text-xs transition-colors">INSTAGRAM</a>
-          <a href="#" className="text-surface/40 hover:text-surface text-xs transition-colors">PINTEREST</a>
-          <a href="#" className="text-surface/40 hover:text-surface text-xs transition-colors">TELEGRAM</a>
+          <button onClick={() => window.open('https://instagram.com', '_blank')} className="text-surface/40 hover:text-surface text-xs transition-colors">INSTAGRAM</button>
+          <button onClick={() => window.open('https://pinterest.com', '_blank')} className="text-surface/40 hover:text-surface text-xs transition-colors">PINTEREST</button>
+          <button onClick={() => window.open('https://telegram.org', '_blank')} className="text-surface/40 hover:text-surface text-xs transition-colors">TELEGRAM</button>
         </div>
       </div>
     </footer>

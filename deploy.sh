@@ -86,12 +86,18 @@ apt update && apt upgrade -y
 log_info "Устанавливаю Git..."
 apt install -y git
 
-# Установка Docker
+# Установка Docker (из репозиториев системы, чтобы избежать конфликтов)
 log_info "Устанавливаю Docker..."
 if ! command -v docker &> /dev/null; then
-    curl -fsSL https://get.docker.com -o get-docker.sh
-    sh get-docker.sh
-    rm get-docker.sh
+    # Удаляем конфликтующие пакеты если есть
+    apt remove -y containerd 2>/dev/null || true
+    
+    # Устанавливаем docker.io из репозиториев системы
+    apt install -y docker.io docker-compose
+    
+    # Запускаем Docker
+    systemctl start docker
+    systemctl enable docker
 else
     log_info "Docker уже установлен"
 fi

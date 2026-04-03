@@ -7,7 +7,6 @@ const Navigation = () => {
     const navigate = useNavigate();
     const [categories, setCategories] = useState([]);
     const [isAuthenticated, setIsAuthenticated] = useState(false);
-    const [userMenuOpen, setUserMenuOpen] = useState(false);
     const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
     const [mobileSearchOpen, setMobileSearchOpen] = useState(false);
     const [cartCount, setCartCount] = useState(0);
@@ -37,7 +36,6 @@ const Navigation = () => {
         localStorage.removeItem('token');
         localStorage.removeItem('user');
         setIsAuthenticated(false);
-        setUserMenuOpen(false);
         navigate('/');
     };
 
@@ -57,7 +55,6 @@ const Navigation = () => {
         } else {
             navigate('/login');
         }
-        setUserMenuOpen(false);
     };
 
     return (
