@@ -159,19 +159,17 @@ cd /root/jewelry
 # Создание .env файла
 log_info "Создаю .env файл..."
 cat > .env << EOF
-# Backend
 DEBUG=0
 SECRET_KEY=$SECRET_KEY
 DATABASE_URL=postgresql://jewelry:$DB_PASSWORD@db:5432/jewelry
-
-# Database
 POSTGRES_DB=jewelry
 POSTGRES_USER=jewelry
 POSTGRES_PASSWORD=$DB_PASSWORD
-
-# Frontend
 REACT_APP_API_URL=https://$DOMAIN
 EOF
+
+# Ensure UTF-8 encoding
+sed -i 's/\r$//' .env
 
 # Создание production nginx.conf
 log_info "Создаю nginx.conf..."
@@ -220,7 +218,7 @@ FROM node:18-alpine as build
 WORKDIR /app
 
 COPY package*.json ./
-RUN npm install --only=production
+RUN npm install
 
 COPY . .
 RUN npm run build
