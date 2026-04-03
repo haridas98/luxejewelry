@@ -2,6 +2,28 @@ from django.db import models
 from django.utils.text import slugify
 
 
+class Brand(models.Model):
+    """Бренды ювелирных изделий"""
+    name = models.CharField(max_length=200, unique=True)
+    slug = models.SlugField(max_length=200, unique=True, blank=True)
+    description = models.TextField(blank=True)
+    logo = models.ImageField(upload_to='brand_logos/', blank=True, null=True)
+    is_active = models.BooleanField(default=True)
+    created_at = models.DateTimeField(auto_now_add=True)
+
+    class Meta:
+        verbose_name_plural = "Brands"
+        ordering = ['name']
+
+    def save(self, *args, **kwargs):
+        if not self.slug:
+            self.slug = slugify(self.name)
+        super().save(*args, **kwargs)
+
+    def __str__(self):
+        return self.name
+
+
 class Category(models.Model):
     name = models.CharField(max_length=100, unique=True)
     description = models.TextField(blank=True, null=True)
@@ -47,11 +69,15 @@ class Product(models.Model):
     name = models.CharField(max_length=255)
     description = models.TextField()
     price = models.DecimalField(max_digits=10, decimal_places=2)
-    
-    # Артикул
+
+    # Артикул и референс
     sku = models.CharField(max_length=100, unique=True, blank=True)
     article = models.CharField(max_length=50, blank=True, null=True, help_text="Артикул товара (например, RG-001)")
-    
+    reference = models.CharField(max_length=100, blank=True, null=True, help_text="Референс с сайта (reference number)")
+
+    # Бренд
+    brand = models.ForeignKey(Brand, on_delete=models.SET_NULL, null=True, blank=True, related_name='products')
+
     # Категория и подкатегория
     category = models.ForeignKey(Category, on_delete=models.CASCADE, related_name='products')
     subcategory = models.ForeignKey(Subcategory, on_delete=models.SET_NULL, null=True, blank=True, related_name='products')

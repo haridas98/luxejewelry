@@ -1,5 +1,13 @@
 from django.contrib import admin
-from .models import Category, Product, ProductImage, Set, SetProduct, Subcategory, Stone, Wishlist
+from .models import Brand, Category, Product, ProductImage, Set, SetProduct, Subcategory, Stone, Wishlist
+
+
+@admin.register(Brand)
+class BrandAdmin(admin.ModelAdmin):
+    list_display = ['name', 'slug', 'is_active', 'created_at']
+    list_filter = ['is_active', 'created_at']
+    search_fields = ['name', 'description']
+    prepopulated_fields = {'slug': ('name',)}
 
 
 class ProductImageInline(admin.TabularInline):
@@ -9,9 +17,9 @@ class ProductImageInline(admin.TabularInline):
 
 @admin.register(Product)
 class ProductAdmin(admin.ModelAdmin):
-    list_display = ['article', 'name', 'category', 'price', 'ring_size', 'stock_quantity', 'has_stones', 'is_active', 'is_out_of_stock']
-    list_filter = ['category', 'has_stones', 'is_active', 'is_out_of_stock', 'is_featured', 'ring_size']
-    search_fields = ['name', 'description', 'sku', 'article']
+    list_display = ['article', 'name', 'brand', 'category', 'price', 'ring_size', 'stock_quantity', 'has_stones', 'is_active', 'is_out_of_stock']
+    list_filter = ['brand', 'category', 'has_stones', 'is_active', 'is_out_of_stock', 'is_featured', 'ring_size']
+    search_fields = ['name', 'description', 'sku', 'article', 'reference']
     prepopulated_fields = {'sku': ('name',)}
     inlines = [ProductImageInline]
     date_hierarchy = 'created_at'
@@ -19,7 +27,7 @@ class ProductAdmin(admin.ModelAdmin):
 
     fieldsets = (
         ('Основная информация', {
-            'fields': ('name', 'description', 'price', 'article', 'sku', 'category')
+            'fields': ('name', 'description', 'price', 'brand', 'article', 'reference', 'sku', 'category')
         }),
         ('Параметры изделия', {
             'fields': ('material', 'weight', 'dimensions', 'ring_size', 'stones', 'has_stones'),
