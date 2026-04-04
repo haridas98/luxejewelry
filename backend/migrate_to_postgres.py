@@ -7,6 +7,7 @@ Usage:
 """
 import os
 import sys
+import io
 import django
 
 # Настройка Django
@@ -15,8 +16,6 @@ sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 django.setup()
 
 from django.core.management import call_command
-import json
-import tempfile
 
 def export_sqlite():
     """Экспорт данных из SQLite в JSON fixture"""
@@ -24,33 +23,16 @@ def export_sqlite():
     
     fixture_file = os.path.join(os.path.dirname(__file__), 'data_export.json')
     
-    # Экспортируем все данные
-    call_command('dumpdata', 
-                 '--natural-foreign',
-                 '--natural-primary',
-                 '--indent=2',
-                 '--output=' + fixture_file)
+    # Открываем файл с явной кодировкой UTF-8
+    with io.open(fixture_file, 'w', encoding='utf-8') as f:
+        call_command('dumpdata', 
+                     '--natural-foreign',
+                     '--natural-primary',
+                     '--indent=2',
+                     stdout=f)
     
     print(f"✅ Данные экспортированы в {fixture_file}")
     return fixture_file
-
-def import_to_postgres(fixture_file):
-    """Импорт данных в PostgreSQL"""
-    print("📥 Импорт данных в PostgreSQL...")
-    
-    # Убедимся, что используется PostgreSQL
-    from django.conf import settings
-    db_engine = settings.DATABASES['default']['ENGINE']
-    
-    if 'sqlite' in db_engine:
-        print("❌ Ошибка: текущая БД — SQLite. Настройте DATABASE_URL для PostgreSQL.")
-        return
-    
-    print(f"🗄️  Подключение к: {db_engine}")
-    
-    # Загружаем данные
-    call_command('loaddata', fixture_file)
-    print("✅ Данные импортированы!")
 
 def migrate():
     """Полный процесс миграции"""
@@ -70,11 +52,12 @@ def migrate():
     print("=" * 50)
     print()
     print("1. Загрузите файл data_export.json на сервер:")
-    print("   scp data_export.json root@<IP>:/root/luxejewelry/backend/")
+    print("   scp backend/data_export.json root@<IP>:/root/luxejewelry/backend/")
     print()
     print("2. На сервере выполните:")
     print("   cd /root/luxejewelry")
-    print("   docker compose -f docker-compose.prod.yml exec backend python manage.py loaddata /app/data_export.json")
+    print("   docker cp backend/data_export.json luxejewelry-backend-1:/app/")
+    print("   docker compose -f docker-compose.prod.yml exec backend python /app/import_data.py")
     print()
     print("=" * 50)
 

@@ -7,7 +7,7 @@ services:
       dockerfile: Dockerfile
     volumes:
       - static_volume:/app/staticfiles
-      - media_volume:/app/media
+      - ./media:/app/media
     environment:
       - DEBUG=${DEBUG:-0}
       - SECRET_KEY=${SECRET_KEY}
@@ -38,6 +38,9 @@ services:
       dockerfile: Dockerfile.prod
     ports:
       - "80:80"
+    volumes:
+      - static_volume:/app/staticfiles
+      - ./media:/app/media
     depends_on:
       - backend
     restart: always
