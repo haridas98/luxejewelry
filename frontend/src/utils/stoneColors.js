@@ -4,7 +4,7 @@ export const STONE_COLORS = {};
 // Загрузка камней из API
 export const fetchStones = async () => {
     try {
-        const response = await fetch('http://localhost:8000/api/stones/');
+        const response = await fetch('apiEndpoint(ENDPOINTS.stones/');
         const data = await response.json();
         
         // Сохраняем цвета

@@ -8,7 +8,7 @@ services:
       dockerfile: backend/Dockerfile
     volumes:
       - static_volume:/app/staticfiles
-      - media_volume:/app/media
+      - ./backend/media:/app/media  # Прямая ссылка на папку media
     environment:
       - DEBUG=${DEBUG:-0}
       - SECRET_KEY=${SECRET_KEY}
@@ -43,6 +43,8 @@ services:
       dockerfile: Dockerfile.prod
     ports:
       - "80:80"
+    volumes:
+      - ./backend/media:/app/media  # Прямая ссылка на папку media для Nginx
     depends_on:
       - backend
     restart: always
@@ -52,7 +54,6 @@ services:
 volumes:
   postgres_data:
   static_volume:
-  media_volume:
 
 networks:
   jewelry-network:

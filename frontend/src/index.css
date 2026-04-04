@@ -1,13 +1,18 @@
+@import url('https://fonts.googleapis.com/css2?family=Noto+Serif:wght@300;400;500;600;700&family=Manrope:wght@200;300;400;500;600;700;800&display=swap');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-@import url('https://fonts.googleapis.com/css2?family=Noto+Serif:wght@300;400;500;600;700&family=Manrope:wght@200;300;400;500;600;700;800&display=swap');
-
+/* Smooth animations */
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
 }
 
 body {
@@ -16,6 +21,7 @@ body {
   -moz-osx-font-smoothing: grayscale;
   background-color: #faf9f6;
   color: #1a1c1a;
+  overflow-x: hidden;
 }
 
 h1, h2, h3, h4, h5, h6 {

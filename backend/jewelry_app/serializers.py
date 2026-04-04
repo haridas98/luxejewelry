@@ -15,27 +15,57 @@ class SubcategorySerializer(serializers.ModelSerializer):
 
 
 class ProductImageSerializer(serializers.ModelSerializer):
+    # Добавляем поле для полного URL картинки
+    image_url = serializers.SerializerMethodField()
+
     class Meta:
         model = ProductImage
         fields = ['id', 'image', 'image_url', 'alt_text', 'is_primary', 'sort_order', 'created_at']
+
+    def get_image_url(self, obj):
+        # Сначала пробуем image_url (если оно заполнено)
+        if obj.image_url:
+            request = self.context.get('request')
+            if request:
+                return request.build_absolute_uri(obj.image_url)
+            return f"http://localhost:8000{obj.image_url}"
+        
+        # Иначе используем загруженный файл
+        if obj.image:
+            request = self.context.get('request')
+            if request:
+                return request.build_absolute_uri(obj.image.url)
+            return f"http://localhost:8000{obj.image.url}"
+        return None
 
 
 class ProductSerializer(serializers.ModelSerializer):
     images = ProductImageSerializer(many=True, read_only=True)
     category_name = serializers.CharField(source='category.name', read_only=True)
     subcategory_name = serializers.CharField(source='subcategory.name', read_only=True)
+    brand_name = serializers.CharField(source='brand.name', read_only=True)
     stones = StoneSerializer(many=True, read_only=True)
     stone_type = serializers.SerializerMethodField()
     sets = serializers.SerializerMethodField()
     admin_info = serializers.SerializerMethodField()
 
+    def to_representation(self, instance):
+        ret = super().to_representation(instance)
+        if instance.images.exists():
+            ret['images'] = ProductImageSerializer(
+                instance.images.all(),
+                many=True,
+                context=self.context
+            ).data
+        return ret
+
     class Meta:
         model = Product
-        fields = ['id', 'name', 'description', 'price', 'sku', 'article', 'category', 'subcategory', 
-                  'material', 'weight', 'dimensions', 'stone_weight', 'ring_size', 'has_stones', 
-                  'is_featured', 'cost_price', 'price_thb', 'price_per_gram_thb', 'is_active', 
+        fields = ['id', 'name', 'description', 'price', 'article', 'category', 'subcategory', 'brand',
+                  'metal', 'metal_purity', 'metal_display', 'material', 'weight', 'dimensions', 'stone_weight', 'ring_size',
+                  'is_featured', 'cost_price', 'price_thb', 'price_per_gram_thb', 'is_active',
                   'is_out_of_stock', 'stock_quantity', 'sold_quantity', 'created_at', 'updated_at',
-                  'images', 'category_name', 'subcategory_name', 'stones', 'stone_type', 'sets', 
+                  'images', 'category_name', 'subcategory_name', 'brand_name', 'stones', 'stone_type', 'sets',
                   'admin_info']
 
     def get_stone_type(self, obj):

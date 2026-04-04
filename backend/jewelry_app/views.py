@@ -86,14 +86,14 @@ class SubcategoryListCreateView(generics.ListCreateAPIView):
 class ProductListCreateView(generics.ListAPIView):
     serializer_class = ProductSerializer
     filter_backends = [DjangoFilterBackend, SearchFilter, OrderingFilter]
-    filterset_fields = ['category', 'subcategory', 'material', 'has_stones', 'is_featured', 'stones']
-    search_fields = ['name', 'description', 'sku', 'article']
+    filterset_fields = ['category', 'subcategory', 'material', 'is_featured']
+    search_fields = ['name', 'description', 'article']
     ordering_fields = ['price', 'created_at', 'name']
     ordering = ['-created_at']
     pagination_class = None  # Отключаем пагинацию для загрузки всех товаров
 
     def get_queryset(self):
-        queryset = Product.objects.filter(is_active=True, is_out_of_stock=False).prefetch_related('stones', 'images')
+        queryset = Product.objects.filter(is_active=True, is_out_of_stock=False).prefetch_related('stones', 'images', 'brand')
 
         # Фильтрация по цене
         min_price = self.request.query_params.get('min_price', None)

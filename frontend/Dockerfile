@@ -1,19 +1,24 @@
 # Frontend Development Dockerfile
-FROM node:18-alpine
+FROM node:20-alpine
 
 WORKDIR /app
 
-# Copy package files (из-за того что context = корень проекта)
-COPY frontend/package*.json ./
+# Copy package files
+COPY package*.json ./
+COPY tsconfig.json ./
+COPY vite.config.ts ./
+COPY tailwind.config.js ./
+COPY postcss.config.js ./
+COPY index.html ./
 
 # Install dependencies
 RUN npm install
 
-# Copy project (из-за того что context = корень проекта)
-COPY frontend/ .
+# Copy project
+COPY . .
 
 # Expose port
 EXPOSE 3000
 
 # Start development server
-CMD ["npm", "start"]
+CMD ["npm", "run", "dev", "--", "--host"]

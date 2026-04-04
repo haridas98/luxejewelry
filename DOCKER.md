@@ -1,187 +1,92 @@
-# 🐳 Docker развёртывание
+# Запуск проекта в Docker
 
-## Быстрый старт
+## Разработка (Development)
 
-### 1. Production режим (backend + frontend + PostgreSQL)
-
+### 1. Запустить только бэкенд (Django)
 ```bash
-docker-compose --profile production up -d --build
+docker-compose up backend
 ```
 
-Доступ:
-- Frontend: http://localhost:3000
-- Backend API: http://localhost:8000/api/
-- Admin: http://localhost:3000/admin/
+Бэкенд будет доступен на: http://localhost:8000
+Admin panel: http://localhost:8000/admin/
 
-### 2. Development режим (с hot reload)
-
+### 2. Запустить фронтенд с hot-reload
 ```bash
-# Backend отдельно
-cd backend
-python manage.py runserver
-
-# Frontend в Docker
 docker-compose --profile development up frontend-dev
 ```
 
-Или всё в Docker:
+Фронтенд будет доступен на: http://localhost:3000
+
+### 3. Запустить всё вместе
 ```bash
-docker-compose --profile development up -d --build
+# В одном терминале - бэкенд
+docker-compose up backend
+
+# В другом терминале - фронтенд
+docker-compose --profile development up frontend-dev
 ```
 
-## Команды
+---
 
-### Запуск
+## Продакшен (Production)
+
+### Собрать и запустить
 ```bash
-docker-compose up -d --build
+docker-compose --profile production up --build
 ```
 
-### Остановка
+Фронтенд: http://localhost:3000
+Бэкенд API: http://localhost:3000/api/
+Admin panel: http://localhost:3000/admin/
+
+---
+
+## Остановка
+
 ```bash
+# Остановить все контейнеры
 docker-compose down
-```
 
-### Полная очистка (удаление volumes)
-```bash
+# Остановить с удалением volumes (для чистой установки)
 docker-compose down -v
 ```
 
-### Просмотр логов
+---
+
+## База данных
+
+В development режиме используется SQLite (файл `backend/db.sqlite3`).
+
+Для production с PostgreSQL:
 ```bash
-docker-compose logs -f
-docker-compose logs -f backend
-docker-compose logs -f frontend
+docker-compose -f docker-compose.prod.yml up --build
 ```
 
-### Выполнение команд в контейнере
+---
 
-#### Создать суперпользователя
+## Полезные команды
+
 ```bash
+# Создать суперпользователя Django
 docker-compose exec backend python manage.py createsuperuser
-```
 
-#### Миграции
-```bash
+# Применить миграции
 docker-compose exec backend python manage.py migrate
-```
 
-#### Импорт товаров
-```bash
-docker-compose exec backend python manage.py import_from_excel
-```
+# Посмотреть логи
+docker-compose logs -f backend
+docker-compose logs -f frontend-dev
 
-#### Python shell
-```bash
-docker-compose exec backend python manage.py shell
-```
-
-## Переменные окружения
-
-Создайте файл `.env` в корне проекта:
-
-```env
-# Backend
-DEBUG=1
-SECRET_KEY=your-super-secret-key-change-in-production
-DATABASE_URL=sqlite:///db.sqlite3
-
-# Database (PostgreSQL)
-POSTGRES_DB=jewelry
-POSTGRES_USER=jewelry
-POSTGRES_PASSWORD=change-this-password
-
-# Frontend
-REACT_APP_API_URL=http://localhost:8000
-```
-
-## Production настройка
-
-### 1. Измените docker-compose.yml
-
-- Замените SQLite на PostgreSQL
-- Установите `DEBUG=0`
-- Измените пароли
-
-### 2. Сборка образов
-
-```bash
-docker-compose -f docker-compose.yml build
-```
-
-### 3. Запуск
-
-```bash
-docker-compose up -d
-```
-
-### 4. Создание админа
-
-```bash
-docker-compose exec backend python manage.py createsuperuser
-```
-
-## Проблемы и решения
-
-### Ошибка "port already in use"
-
-Измените порты в docker-compose.yml:
-```yaml
-ports:
-  - "8080:80"  # вместо 3000:80
-```
-
-### Ошибка миграций
-
-```bash
-docker-compose down -v
-docker-compose up -d --build
-```
-
-### Frontend не видит backend
-
-Проверьте что в frontend/nginx.conf правильный proxy_pass:
-```
-proxy_pass http://backend:8000;
-```
-
-### Медленная сборка
-
-Используйте кэширование:
-```bash
+# Пересобрать образы
 docker-compose build --no-cache
 ```
 
-## Мониторинг
+---
 
-### Статус контейнеров
-```bash
-docker-compose ps
-```
+## Структура портов
 
-### Использование ресурсов
-```bash
-docker stats
-```
-
-### Доступ в контейнер
-```bash
-docker-compose exec backend sh
-docker-compose exec frontend sh
-```
-
-## Бэкап базы данных
-
-### PostgreSQL
-```bash
-docker-compose exec db pg_dump -U jewelry jewelry > backup.sql
-```
-
-### Восстановление
-```bash
-docker-compose exec -T db psql -U jewelry jewelry < backup.sql
-```
-
-### SQLite
-```bash
-docker-compose exec backend cp /app/db.sqlite3 ./backup.sqlite3
-```
+| Сервис | Контейнер | Хост | Описание |
+|--------|-----------|------|----------|
+| Backend | 8000 | 8000 | Django API + Admin |
+| Frontend (dev) | 3000 | 3000 | React с hot-reload |
+| Frontend (prod) | 80 | 3000 | Nginx + React build |

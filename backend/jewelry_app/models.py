@@ -1,5 +1,6 @@
 from django.db import models
 from django.utils.text import slugify
+from .utils import get_product_image_path, get_brand_logo_path
 
 
 class Brand(models.Model):
@@ -7,7 +8,7 @@ class Brand(models.Model):
     name = models.CharField(max_length=200, unique=True)
     slug = models.SlugField(max_length=200, unique=True, blank=True)
     description = models.TextField(blank=True)
-    logo = models.ImageField(upload_to='brand_logos/', blank=True, null=True)
+    logo = models.ImageField(upload_to=get_brand_logo_path, blank=True, null=True)
     is_active = models.BooleanField(default=True)
     created_at = models.DateTimeField(auto_now_add=True)
 
@@ -70,10 +71,8 @@ class Product(models.Model):
     description = models.TextField()
     price = models.DecimalField(max_digits=10, decimal_places=2)
 
-    # Артикул и референс
-    sku = models.CharField(max_length=100, unique=True, blank=True)
-    article = models.CharField(max_length=50, blank=True, null=True, help_text="Артикул товара (например, RG-001)")
-    reference = models.CharField(max_length=100, blank=True, null=True, help_text="Референс с сайта (reference number)")
+    # Артикулы
+    article = models.CharField(max_length=100, unique=True, blank=True, null=True, help_text="Артикул товара (например, RG-001)")
 
     # Бренд
     brand = models.ForeignKey(Brand, on_delete=models.SET_NULL, null=True, blank=True, related_name='products')
@@ -84,39 +83,73 @@ class Product(models.Model):
     
     # Камни (многие-ко-многим)
     stones = models.ManyToManyField(Stone, blank=True, related_name='products')
-    
-    # Параметры
-    material = models.CharField(max_length=100, blank=True)
+
+    # Материалы
+    METAL_CHOICES = [
+        ('gold', 'Золото'),
+        ('white_gold', 'Белое золото'),
+        ('rose_gold', 'Розовое золото'),
+        ('silver', 'Серебро'),
+        ('platinum', 'Платина'),
+        ('steel', 'Сталь'),
+        ('titanium', 'Титан'),
+    ]
+    PURPLE_CHOICES = [
+        ('585', '585 проба'),
+        ('750', '750 проба'),
+        ('916', '916 проба (22К)'),
+        ('999', '999 проба (24К)'),
+    ]
+    SILVER_CHOICES = [
+        ('925', '925 проба (Стерлинговое)'),
+        ('875', '875 проба'),
+        ('800', '800 проба'),
+        ('999', '999 проба'),
+    ]
+    PLATINUM_CHOICES = [
+        ('950', '950 проба'),
+        ('900', '900 проба'),
+        ('850', '850 проба'),
+    ]
+
+    metal = models.CharField(max_length=20, choices=METAL_CHOICES, blank=True, help_text="Основной металл")
+    metal_purity = models.CharField(max_length=10, blank=True, help_text="Проба металла")
+    material = models.CharField(max_length=100, blank=True, help_text="Дополнительное описание материала")
     weight = models.DecimalField(max_digits=8, decimal_places=2, blank=True, null=True)
     dimensions = models.CharField(max_length=100, blank=True)
     stone_weight = models.DecimalField(max_digits=6, decimal_places=2, blank=True, null=True)
     
     # Параметры для разных типов украшений
     ring_size = models.CharField(max_length=20, blank=True, null=True, help_text="Размер кольца (для колец)")
-    has_stones = models.BooleanField(default=False, help_text="Есть ли камни")
     is_featured = models.BooleanField(default=False, help_text="Показывать на главной")
-    
+
     # Админские поля (скрыты от клиентов)
     cost_price = models.DecimalField(max_digits=10, decimal_places=2, blank=True, null=True, help_text="Себестоимость в рублях")
     price_thb = models.DecimalField(max_digits=10, decimal_places=2, blank=True, null=True, help_text="Цена в батах")
     price_per_gram_thb = models.DecimalField(max_digits=8, decimal_places=2, blank=True, null=True, help_text="Цена за грамм в батах")
-    
+
     # Статусы
     is_active = models.BooleanField(default=True, help_text="Скрыть из отображения")
     is_out_of_stock = models.BooleanField(default=False, help_text="Нет в наличии")
     stock_quantity = models.PositiveIntegerField(default=0)
     sold_quantity = models.PositiveIntegerField(default=0)
-    
+
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
 
-    def save(self, *args, **kwargs):
-        if not self.sku:
-            self.sku = slugify(self.name) + '-' + str(self.id or 0)
-        super().save(*args, **kwargs)
-
     def __str__(self):
         return f"{self.article or self.name} - {self.price} ₽"
+
+    @property
+    def metal_display(self):
+        """Возвращает читаемое название металла и пробы"""
+        if not self.metal:
+            return ''
+        metal_names = dict(self.METAL_CHOICES)
+        name = metal_names.get(self.metal, self.metal)
+        if self.metal_purity:
+            return f"{name} {self.metal_purity}"
+        return name
 
     class Meta:
         ordering = ['-created_at']
@@ -124,8 +157,8 @@ class Product(models.Model):
 
 class ProductImage(models.Model):
     product = models.ForeignKey(Product, on_delete=models.CASCADE, related_name='images')
-    image = models.ImageField(upload_to='product_images/', blank=True, null=True)
-    image_url = models.URLField(blank=True, help_text="URL изображения из интернета")
+    image = models.ImageField(upload_to=get_product_image_path, blank=True, null=True)
+    image_url = models.CharField(max_length=500, blank=True, help_text="URL изображения (локальный или внешний)")
     alt_text = models.CharField(max_length=255, blank=True)
     is_primary = models.BooleanField(default=False)
     sort_order = models.PositiveIntegerField(default=0)
