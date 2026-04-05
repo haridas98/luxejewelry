@@ -14,6 +14,7 @@ services:
       - DJANGO_SETTINGS_MODULE=jewelry_store.settings
       - DATABASE_URL=postgresql://${POSTGRES_USER:-jewelry}:${POSTGRES_PASSWORD:-jewelry123}@db:5432/${POSTGRES_DB:-jewelry}
       - ALLOWED_HOSTS=${ALLOWED_HOSTS:-*}
+      - CORS_ALLOW_ALL=1
     command: >
       sh -c "python manage.py migrate &&
              python manage.py collectstatic --noinput &&
