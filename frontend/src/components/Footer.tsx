@@ -7,7 +7,7 @@ const Footer: React.FC = () => {
       <div className="grid grid-cols-1 md:grid-cols-4 gap-12 px-12 w-full mx-auto max-w-[1440px]">
         {/* Brand */}
         <div className="col-span-1 md:col-span-1">
-          <span className="font-headline text-xl text-surface mb-4 block">LUXEJEWELS</span>
+          <span className="font-headline text-xl text-surface mb-4 block">MIELJEWELS</span>
           <p className="text-surface/60 font-body text-sm leading-relaxed max-w-xs">
             Исключительные ювелирные изделия с 2024 года. От наших мастеров к вашей коллекции.
           </p>
@@ -52,7 +52,7 @@ const Footer: React.FC = () => {
       {/* Bottom Bar */}
       <div className="max-w-[1440px] mx-auto px-12 mt-20 pt-10 border-t border-white/5 flex flex-col md:flex-row justify-between items-center gap-6">
         <span className="text-surface/40 font-body text-xs tracking-widest uppercase">
-          © 2024 LUXEJEWELS. ВСЕ ПРАВА ЗАЩИЩЕНЫ.
+          © 2026 MIELJEWELS. ВСЕ ПРАВА ЗАЩИЩЕНЫ.
         </span>
         <div className="flex gap-8">
           <button onClick={() => window.open('https://instagram.com', '_blank')} className="text-surface/40 hover:text-surface text-xs transition-colors">INSTAGRAM</button>

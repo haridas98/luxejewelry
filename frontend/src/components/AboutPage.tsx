@@ -27,7 +27,7 @@ const AboutPage: React.FC = () => {
                 История <br /> Бренда
               </h1>
               <p className="font-body text-lg text-on-surface-variant max-w-md leading-relaxed">
-                Основанный на принципах тихой роскоши, LUXEJEWELS представляет вершину ювелирного мастерства.
+                Основанный на принципах тихой роскоши, MIEL Jewels представляет вершину ювелирного мастерства.
               </p>
             </div>
           </div>
@@ -44,7 +44,7 @@ const AboutPage: React.FC = () => {
                   </h2>
                   <div className="space-y-6 font-body text-lg leading-relaxed text-on-surface-variant">
                     <p>
-                      Основанный в 2024 году, LUXEJEWELS представляет вершину ювелирного мастерства.
+                      Основанный в 2024 году, MIEL Jewels представляет вершину ювелирного мастерства.
                       Каждый камень этически добыт и отобран вручную за его душу и характер.
                     </p>
                     <p>
@@ -286,7 +286,7 @@ const AboutPage: React.FC = () => {
                 </div>
                 <div className="flex items-center gap-4">
                   <span className="material-symbols-outlined text-secondary">email</span>
-                  <span className="font-body">hello@luxejewels.ru</span>
+                  <span className="font-body">hello@mieljewels.ru</span>
                 </div>
                 <div className="flex items-center gap-4">
                   <span className="material-symbols-outlined text-secondary">schedule</span>

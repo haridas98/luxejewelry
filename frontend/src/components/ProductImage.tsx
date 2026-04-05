@@ -9,7 +9,7 @@ interface ProductImageProps extends ImgHTMLAttributes<HTMLImageElement> {
 const ProductImage: React.FC<ProductImageProps> = ({
   src,
   alt = '',
-  fallbackSrc = 'https://via.placeholder.com/400x500/efeeeb/775a19?text=LUXEJEWELS',
+  fallbackSrc = 'https://via.placeholder.com/400x500/efeeeb/775a19?text=MIELJEWELS',
   fallbackClassName = 'w-full aspect-[4/5] bg-surface-variant flex items-center justify-center',
   className = '',
   ...props

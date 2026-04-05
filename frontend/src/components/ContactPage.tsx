@@ -41,7 +41,7 @@ const ContactPage: React.FC = () => {
                 <span className="material-symbols-outlined text-4xl text-secondary mb-4">call</span>
                 <h3 className="font-headline text-lg mb-2">Телефон</h3>
                 <p className="text-on-surface-variant text-sm">+7 (495) 123-45-67</p>
-                <p className="text-on-surface-variant text-sm">info@luxejewels.ru</p>
+                <p className="text-on-surface-variant text-sm">info@Mieljewels.ru</p>
               </div>
             </FadeIn>
           </div>
@@ -76,21 +76,21 @@ const ContactPage: React.FC = () => {
                     <span className="material-symbols-outlined text-secondary">photo_camera</span>
                     <div>
                       <p className="font-medium">Instagram</p>
-                      <p className="text-xs text-on-surface-variant">@luxejewels</p>
+                      <p className="text-xs text-on-surface-variant">@Mieljewels</p>
                     </div>
                   </a>
                   <a href="https://t.me" target="_blank" rel="noopener noreferrer" className="flex items-center gap-4 p-4 bg-surface-container-low hover:bg-surface-container-lowest transition-colors">
                     <span className="material-symbols-outlined text-secondary">send</span>
                     <div>
                       <p className="font-medium">Telegram</p>
-                      <p className="text-xs text-on-surface-variant">@luxejewels</p>
+                      <p className="text-xs text-on-surface-variant">@Mieljewels</p>
                     </div>
                   </a>
                   <a href="https://pinterest.com" target="_blank" rel="noopener noreferrer" className="flex items-center gap-4 p-4 bg-surface-container-low hover:bg-surface-container-lowest transition-colors">
                     <span className="material-symbols-outlined text-secondary">pin</span>
                     <div>
                       <p className="font-medium">Pinterest</p>
-                      <p className="text-xs text-on-surface-variant">LuxeJewels</p>
+                      <p className="text-xs text-on-surface-variant">MielJewels</p>
                     </div>
                   </a>
                 </div>

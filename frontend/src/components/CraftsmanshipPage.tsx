@@ -11,7 +11,7 @@ const CraftsmanshipPage: React.FC = () => {
         <div className="max-w-[1200px] mx-auto px-4 md:px-8">
           <FadeIn>
             <div className="mb-16">
-              <span className="text-secondary text-[10px] tracking-[0.2em] uppercase block mb-4">LuxeJewels</span>
+              <span className="text-secondary text-[10px] tracking-[0.2em] uppercase block mb-4">MIELJewels</span>
               <h1 className="font-headline text-5xl md:text-7xl font-bold mb-6">Мастерство</h1>
               <p className="text-on-surface-variant text-lg leading-relaxed max-w-2xl">
                 Каждое украшение — это результат сотен часов кропотливой ручной работы лучших ювелиров мира.

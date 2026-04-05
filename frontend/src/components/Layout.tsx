@@ -46,7 +46,7 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
             to="/"
             className="font-noto-serif text-2xl tracking-tighter font-bold text-primary uppercase"
           >
-            LUXEJEWELS
+            MIELJEWELS
           </Link>
 
           {/* Desktop Menu */}
@@ -111,7 +111,7 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
       <footer className="bg-primary-container text-surface py-20 px-8">
         <div className="max-w-[1440px] mx-auto grid grid-cols-1 md:grid-cols-4 gap-12">
           <div>
-            <span className="font-noto-serif text-xl text-surface mb-4 block">LUXEJEWELS</span>
+            <span className="font-noto-serif text-xl text-surface mb-4 block">MIELJEWELS</span>
             <p className="text-surface/60 font-body text-sm leading-relaxed">
               Curating the world's most exceptional jewelry since 2024.
             </p>
@@ -146,7 +146,7 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
           </div>
         </div>
         <div className="max-w-[1440px] mx-auto mt-12 pt-8 border-t border-surface/10 flex justify-between items-center text-[10px] uppercase tracking-widest text-surface/40">
-          <span>© 2024 LUXEJEWELS. ALL RIGHTS RESERVED.</span>
+          <span>© 2026 MIELJEWELS. ALL RIGHTS RESERVED.</span>
           <div className="flex gap-6">
             <a href="#" className="hover:text-surface transition-colors">Instagram</a>
             <a href="#" className="hover:text-surface transition-colors">Pinterest</a>

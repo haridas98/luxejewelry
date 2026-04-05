@@ -145,7 +145,7 @@ const AppointmentPage: React.FC = () => {
                       </div>
                       <div className="flex items-center gap-3">
                         <span className="material-symbols-outlined text-secondary-fixed-dim">email</span>
-                        <span>salon@luxejewels.ru</span>
+                        <span>salon@Mieljewels.ru</span>
                       </div>
                       <div className="flex items-center gap-3">
                         <span className="material-symbols-outlined text-secondary-fixed-dim">schedule</span>
