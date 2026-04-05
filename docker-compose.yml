@@ -33,6 +33,7 @@ services:
     environment:
       - CHOKIDAR_USEPOLLING=1
       - WATCHPACK_POLLING=true
+      - VITE_API_URL=http://backend:8000
     command: npm run dev -- --host
     depends_on:
       - backend
