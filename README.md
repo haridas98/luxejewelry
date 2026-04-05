@@ -60,27 +60,36 @@
 
 ## 🚀 Быстрый старт
 
-### Вариант 1: Docker (рекомендуется)
+### Управление Docker (Продакшен)
+
+Для работы с Docker на сервере или локально используйте следующие команды:
 
 ```bash
-# Production режим
-docker-compose --profile production up -d --build
+# 1. Перейти в папку проекта
+cd ~/luxejewelry
 
-# Development режим
-docker-compose --profile development up -d --build
+# 2. Запуск или перезапуск контейнеров (применяет последние изменения)
+docker compose -f docker-compose.prod.yml up -d --build
+
+# 3. Проверка статуса контейнеров
+docker compose -f docker-compose.prod.yml ps
+
+# 4. Просмотр логов (полезно для отладки)
+docker compose -f docker-compose.prod.yml logs -f backend
+docker compose -f docker-compose.prod.yml logs -f frontend
+
+# 5. Полная пересборка без кэша (если изменения не применяются)
+docker compose -f docker-compose.prod.yml build --no-cache
+docker compose -f docker-compose.prod.yml up -d
+
+# 6. Остановка всех контейнеров
+docker compose -f docker-compose.prod.yml down
 ```
 
-**Доступ:**
-- Frontend: http://localhost:3000
-- Backend API: http://localhost:8000/api/
-- Admin: http://localhost:3000/admin/
-
-**Создание суперпользователя:**
-```bash
-docker-compose exec backend python manage.py createsuperuser
-```
-
-📖 **Подробная инструкция:** см. [DOCKER.md](DOCKER.md)
+**Доступ после запуска:**
+- Сайт: `http://<IP-адрес-сервера>`
+- Админка: `http://<IP-адрес-сервера>/admin/`
+- API: `http://<IP-адрес-сервера>/api/products/`
 
 ### Вариант 2: Локальная разработка
 

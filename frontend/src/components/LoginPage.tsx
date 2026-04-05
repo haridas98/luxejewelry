@@ -127,7 +127,6 @@ const LoginPage: React.FC = () => {
 
             <div className="mt-8 text-center">
               <p className="text-xs text-on-surface-variant opacity-60">
-                Demo: admin / admin123
               </p>
             </div>
           </div>
