@@ -23,8 +23,11 @@ class StoneListCreateView(generics.ListCreateAPIView):
     serializer_class = StoneSerializer
 
 
+from django.views.decorators.csrf import csrf_exempt
+
 @api_view(['POST'])
 @permission_classes([AllowAny])
+@csrf_exempt
 def register_user(request):
     """Register a new user"""
     data = request.data
